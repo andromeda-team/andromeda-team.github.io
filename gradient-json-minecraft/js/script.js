@@ -44,7 +44,7 @@ run.onclick = function () {
         array.push("{\"text\":\"" + userInput.value[i] + "\", \"color\":\"" + temp[i] + "\"" + userAdd.value + "}");
     }
     json.innerText = array;
-    var addBrackets = "[" + json.innerText + "]";
+    var addBrackets = "[\"\", " + json.innerText + "]";
     json.innerText = addBrackets;
 }
 
