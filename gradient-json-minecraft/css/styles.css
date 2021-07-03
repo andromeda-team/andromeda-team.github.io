@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+
+:root {
+    --gradientStart: black;
+    --gradientEnd: black;
+}
+
+* {
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    background-color: #21252b;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gradient {
+    width: 80vw;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#gradient input {
+    border: none;
+    padding: 0;
+    width: 4em;
+    height: 4em;
+    background-color: transparent;
+}
+
+#gradient div {
+    width: calc(100% - 8em);
+    height: 2.85em;
+    background-image: linear-gradient(to right, var(--gradientStart) , var(--gradientEnd));
+}
+
+#data {
+    margin-top: 2em;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#data * {
+    text-align: center;
+    border: none;
+    outline: #21252b solid 4px;
+    width: 80vw;
+    height: 3em;
+    background-color: #282c34;
+    color: white;
+}
+
+#data span {
+    padding: 0.4em 0;
+    color: #7b7f81;
+    background-color: transparent;
+    outline: none;
+    word-wrap: break-word;
+}
+
+#data span b {
+    font-weight: normal;
+    white-space: nowrap;
+    padding: 0 0.5em;
+    outline: none;
+}
+
+#output {
+    margin-top: 1em;
+    display: inline-flex;
+    flex-direction: column;
+    width: calc(80vw - 1em);
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+    padding: 0.5em;
+    word-wrap: break-word;
+    height: 1.5em;
+    overflow-y: scroll;
+}
+
+button {
+    transition: 200ms;
+    margin-top: 1em;
+    outline: none;
+    border: none;
+    color: #282c34;
+    background-color: #646260;
+    border-bottom: 5px solid #4b4948;
+    padding: 0.5em;
+}
+
+button:hover {
+    transition: 200ms;
+    background-color: #eb9f2d;
+    border-bottom: 5px solid #21252b;
+}
