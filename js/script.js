@@ -8,14 +8,14 @@ mobileButton.onclick = function () {
         navigation.style.setProperty('left', '0');
         mobileButton.style.setProperty('position', 'absolute');
         mobileButton.style.setProperty('left', 'calc(100% - 5em)');
-        mobileButton.children[0].style.setProperty('transform', 'translateX(48px)');
-        mobileButton.children[1].style.setProperty('left', '0');
+        mobileButton.children[0].style.setProperty('transform', 'translateX(-96px)');
+        mobileButton.children[1].style.setProperty('left', '4px');
     } else {
         mobileButton.style.setProperty('position', 'relative');
         mobileButton.style.setProperty('left', '0');
         navigation.style.setProperty('left', 'calc(5em - 100%)');
         mobileButton.style.setProperty('transform', 'translateX(0)');
         mobileButton.children[0].style.setProperty('transform', 'translateX(0)');
-        mobileButton.children[1].style.setProperty('left', '-48px');
+        mobileButton.children[1].style.setProperty('left', '96px');
     }
 };
