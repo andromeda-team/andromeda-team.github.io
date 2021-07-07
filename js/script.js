@@ -2,6 +2,12 @@ let navigation = document.getElementById('_navigation');
 let mobileButton = document.getElementById('_mobile-button');
 let isMobileButtonActive = false;
 
+if (window.innerWidth <= 900) {
+    updateNavbar(false);
+} else {
+    updateNavbar(true);
+}
+
 mobileButton.onclick = function() {
     isMobileButtonActive = !isMobileButtonActive;
     updateNavbar(isMobileButtonActive);

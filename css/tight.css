@@ -13,3 +13,9 @@
 #_screen {
     width: calc(100%);
 }
+
+@media screen and (max-width:468px) {
+    #_mobile-button {
+        font-size: 0.5em !important;
+    }
+}
