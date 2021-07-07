@@ -26,9 +26,9 @@ textarea {
     background-color: var(--clr-button);
     padding         : var(--px-margin);
     border-radius   : var(--px-margin);
-    overflow        : hidden;
     display         : flex;
     flex-direction  : column;
+    overflow: auto;
 }
 
 .card div {
@@ -39,6 +39,7 @@ textarea {
     padding    : 0.2em;
     font-weight: normal;
     font-family: MinecraftTitle !important;
+    white-space: nowrap;
 }
 
 .card u {
@@ -59,6 +60,7 @@ textarea {
     padding         : calc(var(--px-margin) * 0.5) var(--px-margin);
     border-radius   : var(--px-margin);
     color           : var(--color-text);
+    white-space: nowrap;
 }
 
 .card .mode-switcher:hover {
@@ -113,4 +115,22 @@ textarea {
 @font-face {
     font-family: MinecraftTitle;
     src        : url("../../font/Minecraft\ Title.woff");
+}
+
+@media screen and (max-width: 580px) {
+    #gradient-mode {
+        flex-direction: column;
+    }
+    #gradient-mode button {
+        width: 100%;
+    }
+}
+
+input:hover, textarea:hover {
+    border : 0.1em solid var(--clr-text-hidden) !important;
+}
+
+input:focus, textarea:focus {
+    border : 0.2em solid var(--clr-button-hover) !important;
+    outline: none;
 }
