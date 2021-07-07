@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap');
+
+:root {
+    --clr-background: #1a1f28;
+    --clr-section: #22252e;
+    --clr-button: #2b2d36;
+    --clr-button-hover: #eda827;
+    --clr-text: #e2e5eb;
+    --grdnt-button: linear-gradient(0deg, rgb(222, 145, 43) 0%, rgb(237, 168, 39) 100%);
+    --px-margin: 1em;
+}
+
+body {
+    background-color: var(--clr-background);
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+body section {
+    background-color: var(--clr-section);
+    border-radius: var(--px-margin);
+    margin: var(--px-margin);
+    width: calc(var(--width) - var(--px-margin) * 2);
+    height: calc(var(--height) - var(--px-margin) * 2);
+    --width: 0;
+    --height: 100vh;
+}
+
+#_navigation {
+    display: flex;
+    flex-direction: column;
+    transition: left 200ms;
+    --width: 20em;
+}
+
+#_navigation a {
+    transition: background-color 200ms;
+    background-color: var(--clr-button);
+    border-radius: var(--px-margin);
+    font-size: 1em;
+    margin: var(--px-margin) var(--px-margin) 0 var(--px-margin);
+    padding: calc(var(--px-margin) * 0.5) var(--px-margin);
+    font-family: 'Jaldi', sans-serif;
+    text-decoration: none;
+    color: var(--clr-text);
+}
+
+#_navigation a:hover {
+    transition: background-color 200ms;
+    background-color: var(--clr-button-hover);
+    color: var(--clr-section);
+}
+
+#_mobile-button {
+    transition: left 200ms;
+    background: var(--grdnt-button);
+    position: relative;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    --width: 5em;
+    margin-left: 0;
+    border-radius: 0 var(--px-margin) var(--px-margin) 0;
+    overflow: hidden;
+}
+
+#_mobile-button #second {
+    position: absolute;
+    left: -48px;
+}
+
+#_screen {
+    --width: calc(100% - 19em);
+    margin-left: 0;
+}

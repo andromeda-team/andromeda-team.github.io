@@ -1,0 +1,15 @@
+#_navigation {
+    position: absolute;
+    left: calc(5em - 100%);
+    margin: var(--px-margin) 0;
+    width: calc(100% - 5em);
+    border-radius: 0;
+}
+
+#_mobile-button {
+    display: flex;
+}
+
+#_screen {
+    width: calc(100%);
+}
