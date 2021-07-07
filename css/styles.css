@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap');
-
 :root {
     --clr-background: #1a1f28;
     --clr-section: #22252e;
@@ -13,10 +12,11 @@
 }
 
 html {
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
     color: var(--clr-text);
     position: relative;
     min-height: 100%;
+    width: 100%;
 }
 
 body {
@@ -26,11 +26,11 @@ body {
     margin: 0;
 }
 
-body section {
+body .section {
     background-color: var(--clr-section);
     border-radius: var(--px-margin);
     margin: var(--px-margin);
-    width: calc(var(--width) - var(--px-margin) * 2);
+    min-width: calc(var(--width) - var(--px-margin) * 2);
     height: calc(var(--height) - var(--px-margin) * 2);
     --width: 0;
     --height: 100vh;
@@ -55,7 +55,8 @@ body section {
     margin: var(--px-margin) var(--px-margin) 0 var(--px-margin);
 }
 
-#_navigation :is(img, .selected) {
+#_navigation :is(img,
+.selected) {
     box-shadow: none;
 }
 
@@ -109,17 +110,24 @@ body section {
     margin-left: 0;
     padding: var(--px-margin);
     --height: calc(100vh - var(--px-margin) * 2);
+    overflow-y: auto;
 }
 
-h1, p {
+h1,
+p {
     margin: 0 0 0.2em 0;
 }
 
-em, hr {
+em,
+hr {
     font-style: normal;
     color: var(--clr-text-passive);
 }
 
-b {
+h1 b {
     color: var(--clr-button-hover);
+}
+
+.card {
+    overflow: auto;
 }
