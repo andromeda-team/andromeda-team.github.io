@@ -1,3 +1,7 @@
+body {
+    height: calc(100vh - 6rem);
+}
+
 main {
     height       : calc(100vh - 7rem);
     width        : calc(100vw - 2rem);
