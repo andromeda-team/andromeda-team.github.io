@@ -4,9 +4,9 @@ body {
 
 main {
     position     : fixed;
-    height       : calc(100vh - 7rem);
+    height       : calc(100vh - 6rem);
     width        : calc(100vw - 2rem);
-    top          : 6rem;
+    top          : 5rem;
     left         : 1rem;
     border-radius: 0 0 1rem 1rem;
 }
@@ -16,12 +16,13 @@ nav {
     left           : 1rem;
     top            : 0;
     width          : calc(100vw - 2rem);
-    height         : 4rem;
+    height         : 4.1rem;
     flex-direction : row;
     justify-content: flex-start;
-    border-radius  : 1rem 1rem 0 0;
+    border-radius  : 0 0 1rem 1rem;
     padding        : 0;
     overflow-y     : auto;
+    margin-top: 0;
 }
 
 nav a {
@@ -45,9 +46,9 @@ nav a span {
 }
 
 header {
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 1rem !important;
 }
 
 footer {
-    border-radius: 1rem;
+    border-radius: 1rem !important;
 }
