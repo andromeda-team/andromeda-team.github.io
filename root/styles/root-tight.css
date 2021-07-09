@@ -3,20 +3,20 @@ body {
 }
 
 main {
-    position: fixed;
+    position     : fixed;
     height       : calc(100vh - 7rem);
     width        : calc(100vw - 2rem);
-    top          : 0;
+    top          : 6rem;
     left         : 1rem;
     border-radius: 0 0 1rem 1rem;
 }
 
 nav {
-    position: fixed;
+    position       : fixed;
     left           : 1rem;
-    bottom         : 0;
-    width          : calc(100vw - 3rem);
-    height         : 6rem;
+    top            : 0;
+    width          : calc(100vw - 2rem);
+    height         : 4rem;
     flex-direction : row;
     justify-content: flex-start;
     border-radius  : 1rem 1rem 0 0;
@@ -25,18 +25,18 @@ nav {
 }
 
 nav a {
-    width          : 5rem;
-    height         : 4rem;
+    width          : 3rem;
+    height         : 3rem;
     align-items    : center;
     justify-content: center;
     border-radius  : 1rem;
-    margin-left    : 1rem;
-    margin-bottom  : 1rem;
+    margin-left    : 2rem;
+    margin-top     : 0.5rem;
 }
 
 nav a svg {
-    width : 48px;
-    height: 48px;
+    width : 32px;
+    height: 32px;
 }
 
 nav a span {

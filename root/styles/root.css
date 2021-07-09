@@ -6,9 +6,9 @@
 :root {
     --clr-accentL    : #7ab4f3;
     --clr-accent     : #2984e3;
-    --clr-accentY     : #e36d29;
+    --clr-accentY    : #e36d29;
     --clr-text       : #dfe2e9;
-    --clr-textL       : #515357;
+    --clr-textL      : #515357;
     --clr-textD      : #3c3e47;
     --clr-backgroundL: #2d2f38;
     --clr-background : #22252e;
@@ -18,7 +18,7 @@
 
 html {
     position  : relative;
-    min-height: 100%;
+    min-height: 100% !important;
 }
 
 body {
