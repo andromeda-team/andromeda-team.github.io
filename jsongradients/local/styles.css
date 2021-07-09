@@ -1,5 +1,6 @@
 body {
     --header-size: 5rem;
+    overflow-y: auto;
 }
 
 footer section {
@@ -13,7 +14,7 @@ footer section h3 {
     padding         : 0.25rem 0.5rem;
     border-radius   : 0.5rem;
     box-shadow      : 0 0 1rem rgba(0, 0, 0, 0.2);
-    width           : fit-content;
+    width           : max-content;
 }
 
 footer section h3 b {
@@ -104,7 +105,7 @@ footer section .user-additional-input {
 
 footer section span.parent-switcher {
     align-items  : center;
-    height       : fit-content;
+    height       :max-content;
     margin-bottom: 1rem;
 }
 
@@ -139,7 +140,7 @@ footer section span .normal-switcher button {
 }
 
 footer section span #output {
-    height     : fit-content;
+    height     : max-content;
     white-space: normal;
     text-align : left;
 }
