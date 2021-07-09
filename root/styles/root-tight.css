@@ -11,6 +11,7 @@ main {
 }
 
 nav {
+    position: fixed;
     left           : 1rem;
     bottom         : 0;
     width          : calc(100vw - 3rem);
