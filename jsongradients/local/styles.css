@@ -127,12 +127,12 @@ footer section span .normal-switcher {
 
 footer section span .normal-switcher.focus button {
     margin-left     : 1rem;
-    background-color: var(--clr-accent);
+    background-color: var(--clr-accent) !important;
 }
 
 footer section span .normal-switcher button {
     transition      : margin-left 200ms ease-out, background-color 200ms;
-    background-color: var(--clr-text);
+    background-color: var(--clr-text) !important;
     border-radius   : 0.4rem;
     height          : 1rem;
     width           : 1rem;
