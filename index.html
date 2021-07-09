@@ -4,33 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <title>BubbleTools - Main page</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" media="screen and (max-width: 900px)" href="css/tight.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="root/styles/root.css">
+    <link rel="stylesheet" media="screen and (max-width: 830px)" href="root/styles/root-tight.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <section class="section" id="_navigation">
-        <span><img src="img/banner.png" alt="banner"></span>
-        <a class="selected">Main Page</a>
-        <a class="nav" href="json-gradients/index.html">JSON Gradients</a>
-    </section>
-    <section class="section" id="_mobile-button">
-        <svg id="first" width="38" height="38" version="1.1" viewBox="0 0 512 512" style="transition: transform 200ms;"><g>
-            <path d="m418.7 255.88c0 29.978-109.42 99.631-135.38 114.62-25.962 14.989-140.99 74.92-166.95 59.931-25.962-14.989-31.574-144.57-31.574-174.55 0-29.978 5.6129-159.56 31.574-174.55 25.962-14.989 140.99 44.942 166.95 59.931 25.962 14.989 135.38 84.642 135.38 114.62z" fill="#1a1f28" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" style="paint-order:stroke fill markers"/>
-        </g></svg>
-        <svg id="second" width="38" height="38" version="1.1" viewBox="0 0 512 512" style="transition: left 200ms; transform: rotate(180deg);"><g>
-            <path d="m418.7 255.88c0 29.978-109.42 99.631-135.38 114.62-25.962 14.989-140.99 74.92-166.95 59.931-25.962-14.989-31.574-144.57-31.574-174.55 0-29.978 5.6129-159.56 31.574-174.55 25.962-14.989 140.99 44.942 166.95 59.931 25.962 14.989 135.38 84.642 135.38 114.62z" fill="#1a1f28" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" style="paint-order:stroke fill markers"/>
-        </g></svg>
-    </section>
-    <section class="section" id="_screen">
-        <h1><b>BubbleTools</b> welcomes you!</h1>
-        <p>This site is designed to make it easy to develop resourcepacks <em>/</em> datapacks <em>/</em> maps in minecraft.</p>
-        <br><br>
-        <h1>How to use:</h1>
-        <p>Simply go into menu <em>(on tight screens it minimizes to the side)</em> on the left and open the generator you need.</p>
-    </section>
+    <nav>
+        <a class="focus">
+            <svg width="24" height="24" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> <path d="m85.525 63.133a22.392 22.392 0 0 0-22.393 22.393v41.127a22.392 22.392 0 0 0 22.393 22.393h340.95a22.392 22.392 0 0 0 22.391-22.393v-41.127a22.392 22.392 0 0 0-22.391-22.393h-340.95zm-0.001953 149.91a22.392 22.392 0 0 0-22.391 22.391v41.129a22.392 22.392 0 0 0 22.391 22.391h340.95a22.392 22.392 0 0 0 22.391-22.391v-41.129a22.392 22.392 0 0 0-22.391-22.391h-340.95zm0.001953 149.91a22.392 22.392 0 0 0-22.393 22.391v41.129a22.392 22.392 0 0 0 22.393 22.391h340.95a22.392 22.392 0 0 0 22.391-22.391v-41.129a22.392 22.392 0 0 0-22.391-22.391h-340.95z" fill="#dfe2e9" style="paint-order:stroke fill markers" />
+            </svg>
+            <span>Main Page</span>
+        </a>
+        <a href="jsongradients/index.html">
+            <svg width="24" height="24" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                <path d="m85.1 63.133a21.968 21.968 0 0 0-21.967 21.967v307.86a9.0993 9.0993 0 0 0 15.533 6.4336l143.39-143.39-56.717-56.715a50.753 50.753 0 0 0-35.887-14.865h-5.3008a21.022 21.022 0 0 1-21.021-21.021v-39.244a21.022 21.022 0 0 1 21.021-21.021h39.244a21.022 21.022 0 0 1 21.021 21.021v5.3047a50.75 50.75 0 0 0 14.865 35.887l56.715 56.713 143.39-143.39a9.0993 9.0993 0 0 0-6.4336-15.533z" fill="#dfe2e9" style="paint-order:stroke fill markers" />
+                <path d="m439.77 109.94a9.0993 9.0993 0 0 0-6.4336 2.6641l-143.39 143.39 56.719 56.715a50.752 50.752 0 0 0 35.887 14.865h5.2988a21.022 21.022 0 0 1 21.021 21.021v39.244a21.022 21.022 0 0 1-21.021 21.021h-39.244a21.022 21.022 0 0 1-21.021-21.021v-5.3086a50.75 50.75 0 0 0-14.865-35.887l-56.713-56.711-143.39 143.39a9.0993 9.0993 0 0 0 6.4336 15.533h307.86a21.968 21.968 0 0 0 21.967-21.967v-307.86a9.0993 9.0993 0 0 0-9.0996-9.0977z" fill="#51535c" style="paint-order:stroke fill markers" />
+            </svg>
+            <span>JSON Gradients</span>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h2>MAIN PAGE</h2>
+        </header>
+        <footer>
+            
+        </footer>
+    </main>
 </body>
 
 </html>

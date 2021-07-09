@@ -1,0 +1,47 @@
+main {
+    height       : calc(100vh - 7rem);
+    width        : calc(100vw - 2rem);
+    top          : 0;
+    left         : 1rem;
+    border-radius: 0 0 1rem 1rem;
+}
+
+nav {
+    left           : 1rem;
+    bottom         : 0;
+    width          : calc(100vw - 3rem);
+    height         : 6rem;
+    flex-direction : row;
+    justify-content: flex-start;
+    border-radius  : 1rem 1rem 0 0;
+    padding        : 0;
+    overflow-y     : auto;
+}
+
+nav a {
+    width          : 5rem;
+    height         : 4rem;
+    align-items    : center;
+    justify-content: center;
+    border-radius  : 1rem;
+    margin-left    : 1rem;
+    margin-bottom  : 1rem;
+}
+
+nav a svg {
+    width : 48px;
+    height: 48px;
+}
+
+nav a span {
+    display: none;
+    width  : 1rem;
+}
+
+header {
+    border-radius: 0 0 1rem 1rem;
+}
+
+footer {
+    border-radius: 1rem;
+}

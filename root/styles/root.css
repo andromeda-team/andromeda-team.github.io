@@ -1,0 +1,154 @@
+@font-face {
+    font-family: Minecraft;
+    src        : url('../font/F77MinecraftRegular.woff');
+}
+
+:root {
+    --clr-accentL    : #7ab4f3;
+    --clr-accent     : #2984e3;
+    --clr-accentY     : #e36d29;
+    --clr-text       : #dfe2e9;
+    --clr-textL       : #515357;
+    --clr-textD      : #3c3e47;
+    --clr-backgroundL: #2d2f38;
+    --clr-background : #22252e;
+    --clr-backgroundD: #1a1f28;
+    font-size        : 16px;
+}
+
+html {
+    position  : relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--clr-backgroundD);
+    margin          : 0;
+    --header-size   : 2rem;
+}
+
+main {
+    position     : fixed;
+    height       : calc(100vh - 2rem);
+    width        : calc(100vw - 16rem);
+    top          : 1rem;
+    left         : 16rem;
+    border-radius: 0;
+    overflow     : hidden;
+}
+
+* {
+    font-family    : 'Montserrat', sans-serif;
+    font-weight    : 800;
+    text-decoration: none;
+}
+
+nav {
+    background-color: var(--clr-background);
+    position        : fixed;
+    display         : flex;
+    flex-direction  : column;
+    width           : 14rem;
+    height          : calc(100vh - 2rem);
+    border-radius   : 0 1rem 1rem 0;
+    padding         : 0 0 0 1rem;
+    margin-top      : 1rem;
+    overflow        : auto;
+}
+
+nav a {
+    transition   : background-color 200ms;
+    color        : var(--clr-text);
+    display      : flex;
+    align-items  : center;
+    width        : 100%;
+    border-radius: 1rem 0 0 1rem;
+    margin-top   : 1rem;
+}
+
+nav a:last-child {
+    margin-bottom: 1rem;
+}
+
+nav .focus {
+    background-color: var(--clr-backgroundD);
+    color           : var(--clr-textD);
+}
+
+nav .focus svg path {
+    fill: var(--clr-backgroundL);
+}
+
+nav a:not(.focus):hover {
+    background-color: var(--clr-backgroundL);
+}
+
+nav a * {
+    padding: 0.5rem;
+}
+
+*::-webkit-scrollbar {
+    width : 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #2d2f3873;
+    border-radius   : 1em;
+}
+
+*::-webkit-scrollbar-corner {
+    display: none;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2d2f3873 transparent;
+}
+
+header {
+    background-color: var(--clr-background);
+    color           : var(--clr-text);
+    display         : flex;
+    flex-direction  : column;
+    justify-content : flex-start;
+    align-items     : center;
+    padding         : 1rem;
+    height          : var(--header-size);
+    width           : calc(100% - 2rem);
+    border-radius   : 1rem 0 0 1rem;
+    overflow-y      : auto;
+}
+
+header h2 {
+    margin: 0;
+}
+
+header p {
+    margin     : 0;
+    font-weight: 500;
+}
+
+footer {
+    background-color: var(--clr-background);
+    display         : flex;
+    flex-direction  : column;
+    height          : calc(100% - 4rem - var(--header-size));
+    width           : 100%;
+    border-radius   : 1rem 0 0 1rem;
+    margin-top      : 1rem;
+    overflow        : auto;
+    padding         : 0 1rem 1rem 1rem;
+}
+
+footer section {
+    background-color: var(--clr-backgroundL);
+    width           : calc(100% - 4rem);
+    margin-top      : 1rem;
+    border-radius   : 1rem;
+    padding         : 1rem;
+}
