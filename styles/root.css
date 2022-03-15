@@ -30,13 +30,15 @@ body {
     height: 100%;
     overflow: hidden;
     margin: 0;
-    display: grid;
-    grid-template-columns: 18rem calc(100vw - 18rem);
-    grid-template-rows: 3rem calc(100vw - 3rem);
+    display: flex;
+    flex-direction: column;
     gap: 0;
-    grid-template-areas:
-        "header header"
-        "nav main";
+}
+
+body > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .icon {
@@ -105,6 +107,8 @@ nav {
     overflow-y: auto;
     padding: 0.3rem;
     border-right: 1px solid var(--section);
+    width: 18rem;
+    min-width: 18rem;
 }
 
 nav > *:not(div) {
@@ -211,4 +215,59 @@ main {
     align-items: stretch;
     padding: 0.5rem;
     color: var(--text);
+    overflow-y: auto;
+    height: calc(100vh - 3.4rem);
+}
+
+@media only screen and (max-width: 40rem) {
+    body {
+        display: flex;
+        margin-top: 3rem;
+    }
+    
+    body > div {
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        width: 100vw;
+        scroll-snap-type: x mandatory;
+    }
+
+    body > div::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari and Opera */
+    }
+
+    header {
+        position: fixed;
+        min-height: 3rem;
+        max-height: 3rem;
+        top: 0;
+        padding-left: 0.4rem;
+    }
+
+    header > h1 {
+        display: none;
+    }
+
+    nav,
+    main {
+        min-width: calc(100vw - 0.8rem);
+        scroll-snap-align: start;
+    }
+
+    nav button:not(.inactive) {
+        width: calc(100% - 0.8rem);
+    }
+
+    nav button + div {
+        width: 100%;
+    }
+
+    nav button + div > * {
+        width: 90%;
+    }
+
+    nav hr {
+        width: 80%;
+    }
 }
