@@ -20,10 +20,12 @@ a {
     align-items: center;
     gap: 0.5rem;
     border: none;
-    outline: 2px solid transparent;
     font-size: 1rem;
     white-space: nowrap;
-    transition: background-color 200ms, color 200ms, outline-color 200ms;
+}
+
+.button.animated {
+    transition: background-color 200ms, color 200ms;
 }
 
 .button > span {
@@ -36,7 +38,7 @@ a {
 }
 
 .button:focus {
-    outline-color: var(--focus-outline);
+    outline: 2px solid var(--focus-outline);
 }
 
 .button.focus {
