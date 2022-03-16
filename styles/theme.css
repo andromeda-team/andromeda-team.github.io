@@ -1,3 +1,14 @@
+.icon {
+    min-height: 1rem;
+    min-width: 1rem;
+}
+
+a {
+    color: var(--blue);
+}
+
+
+/* Buttons: */
 .button {
     background-color: transparent;
     color: var(--text-dimmed);
@@ -8,18 +19,178 @@
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    white-space: nowrap;
 }
 
 .button > span {
     margin-top: 1px;
 }
 
+.button.animated {
+    transition: background-color 200ms, color 200ms;
+}
+
 .button:hover {
-    background-color: var(--selection);
+    background-color: rgba(255, 255, 255, 0.05);
     color: var(--text);
+}
+
+.button:focus {
+    outline: 2px solid var(--focus-outline);
 }
 
 .button.focus {
     background-color: var(--header-highlight);
     color: var(--text);
+}
+
+.button.category > .icon:last-child {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button.pinned > .icon:last-child {
+    margin-left: auto;
+    margin-right: 0;
+    color: var(--text-disabled);
+}
+
+.button.category + label {
+    background-color: var(--background);
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: var(--nav-size);
+    width: var(--nav-size);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.page {
+    transition: left 200ms, margin-left 200ms, padding-right 200ms;
+    overflow-y: auto;
+}
+
+.category:not(.revealed) + label {
+    left: 100%;
+}
+
+.category.revealed + label {
+    left: 0;
+}
+
+
+/* Inputs: */
+.input {
+    background-color: var(--input);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--text-dimmed);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 2rem;
+}
+
+.input > input:focus {
+    outline: 2px solid var(--focus-outline);
+}
+
+.input > input {
+    background-color: transparent;
+    border: none;
+    width: calc(100% - 1rem);
+    margin: 0;
+    padding: 0 0.5rem;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: lighter;
+    font-family: Ubuntu Mono, 'Courier New', Courier, monospace;
+    border-radius: 0.25rem;
+}
+
+.input > button {
+    min-width: 2rem;
+    margin-left: auto;
+    margin-right: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+}
+
+
+/* Inputs/Buttons: */
+.button.margin,
+.input.margin {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.button.fit-parent,
+.input.fit-parent {
+    width: calc(100% - 1rem);
+}
+
+.button.fit-parent.margin,
+.input.fit-parent.margin {
+    width: calc(100% - 2rem);
+}
+
+.button.fit-absolute,
+.input.fit-absolute {
+    width: 100%;
+}
+
+.button.fit-absolute.margin,
+.input.fit-absolute.margin {
+    width: calc(100% - 1rem);
+}
+
+
+/* Other: */
+main .center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+main article {
+    background-color: var(--list);
+    margin: 0.375rem auto;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    font-weight: 300;
+    width: min(100% - 1.5rem, 48rem);
+}
+
+main h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+main h2 {
+    margin: 0;
+    font-size: 1.35rem;
+}
+
+main article p {
+    margin: 0.75rem 0;
+}
+
+main article p:last-child {
+    margin-bottom: 0;
+}
+
+code {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-family: Ubuntu Mono, 'Courier New', Courier, monospace;
 }
