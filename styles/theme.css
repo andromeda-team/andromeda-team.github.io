@@ -64,7 +64,7 @@ a {
     left: 100%;
     min-width: var(--nav-size);
     width: var(--nav-size);
-    height: 100%;
+    height: calc(100% - 1rem);
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -72,9 +72,15 @@ a {
     padding: 0.5rem 0;
 }
 
+.button.category + label hr {
+    margin: 0;
+}
+
 .page {
     transition: left 200ms, margin-left 200ms, padding-right 200ms;
     overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 1rem);
 }
 
 .category:not(.revealed) + label {
