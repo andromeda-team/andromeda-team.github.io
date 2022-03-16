@@ -64,7 +64,7 @@ header > * {
 header > h1 {
     font-size: 1rem;
     margin: 0;
-    padding: 1rem;
+    padding: 0.7rem;
 }
 
 header > h1 ~ div {
@@ -83,6 +83,7 @@ header > h1 ~ div a {
     align-items: center;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
     text-decoration: none;
     color: var(--text-dimmed)
 }
@@ -101,11 +102,11 @@ nav {
     grid-area: nav;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.5rem;
     align-items: stretch;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 0.3rem;
+    padding: 0.5rem 0;
     border-right: 1px solid var(--section);
     width: 18rem;
     min-width: 18rem;
@@ -119,6 +120,7 @@ nav a,
 nav button {
     background-color: transparent;
     padding: 0.5rem;
+    margin: 0 0.5rem;
     border-radius: 0.25rem;
     border: none;
     font-size: 1rem;
@@ -149,8 +151,8 @@ nav button:hover {
 
 nav a.active,
 nav button.active {
-    background-color: var(--accent);
-    color: var(--background);
+    background-color: var(--section);
+    color: var(--text);
 }
 
 nav a:focus,
@@ -202,10 +204,9 @@ nav > div:not(.hidden) {
 nav hr {
     outline: none;
     border: none;
-    background-color: var(--header);
-    width: 16rem;
-    height: 2px;
-    border-radius: 2px;
+    margin: 0;
+    background-color: var(--section);
+    height: 1px;
 }
 
 main {
@@ -213,7 +214,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0.5rem;
+    padding: 0 0.75rem;
     color: var(--text);
     overflow-y: auto;
     height: calc(100vh - 3.4rem);
