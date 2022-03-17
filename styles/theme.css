@@ -116,7 +116,7 @@ a.local_link > .icon {
     height: 2rem;
     color: var(--text);
     font-size: 1rem;
-    font-weight: lighter;
+    font-weight: 500;
     border-radius: 0.25rem;
 }
 
