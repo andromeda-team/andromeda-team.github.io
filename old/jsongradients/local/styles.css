@@ -3,11 +3,11 @@ body {
     overflow-y: auto;
 }
 
-footer section {
+section section {
     color: var(--clr-text);
 }
 
-footer section h3 {
+section section h3 {
     background-color: var(--clr-accent);
     position        : relative;
     margin          : -1.6rem 0 0 0;
@@ -17,11 +17,11 @@ footer section h3 {
     width           : max-content;
 }
 
-footer section h3 b {
+section section h3 b {
     color: var(--clr-accentL);
 }
 
-footer section span {
+section section span {
     display       : flex;
     flex-direction: row;
     position      : relative;
@@ -29,7 +29,7 @@ footer section span {
     width         : 100%;
 }
 
-footer section span input[type="color"] {
+section section span input[type="color"] {
     background-color: transparent;
     height          : 3rem;
     width           : 50%;
@@ -37,7 +37,7 @@ footer section span input[type="color"] {
     padding         : 0;
 }
 
-footer section span .mode-switcher {
+section section span .mode-switcher {
     transition      : background-color 200ms;
     background-color: var(--clr-backgroundD);
     color           : var(--clr-text);
@@ -49,16 +49,16 @@ footer section span .mode-switcher {
     border-radius   : 0.5rem 0 0 0.5rem;
 }
 
-footer section span .mode-switcher:last-child {
+section section span .mode-switcher:last-child {
     margin-left  : 0.2rem;
     border-radius: 0 0.5rem 0.5rem 0;
 }
 
-footer section span button.focus {
+section section span button.focus {
     background-color: var(--clr-accent);
 }
 
-footer section #user-input {
+section section #user-input {
     background-color: var(--clr-backgroundD);
     color           : var(--clr-text);
     font-family     : Minecraft;
@@ -74,21 +74,21 @@ footer section #user-input {
     outline         : none;
 }
 
-footer section :is(#user-input:focus, .user-additional-input:focus) {
+section section :is(#user-input:focus, .user-additional-input:focus) {
     border: 2px solid var(--clr-accent);
 }
 
-footer section #user-input:focus {
+section section #user-input:focus {
     width : calc(100% - 1rem - 4px);
     height: calc(8rem - 4px);
 }
 
-footer section .user-additional-input:focus {
+section section .user-additional-input:focus {
     width : calc(100% - 1rem - 4px);
     height: calc(1rem - 4px);
 }
 
-footer section .user-additional-input {
+section section .user-additional-input {
     background-color: var(--clr-backgroundD);
     color           : var(--clr-text);
     font-family     : Minecraft;
@@ -103,13 +103,13 @@ footer section .user-additional-input {
     outline         : none;
 }
 
-footer section span.parent-switcher {
+section section span.parent-switcher {
     align-items  : center;
     height       :max-content;
     margin-bottom: 1rem;
 }
 
-footer section span u {
+section section span u {
     margin-right: 1rem;
     font-family : Minecraft;
     font-weight : normal;
@@ -117,7 +117,7 @@ footer section span u {
     white-space : nowrap;
 }
 
-footer section span .normal-switcher {
+section section span .normal-switcher {
     background-color: var(--clr-backgroundD);
     display         : flex;
     height          : 1rem;
@@ -125,12 +125,12 @@ footer section span .normal-switcher {
     border-radius   : 0.4rem;
 }
 
-footer section span .normal-switcher.focus button {
+section section span .normal-switcher.focus button {
     margin-left     : 1rem;
     background-color: var(--clr-accent) !important;
 }
 
-footer section span .normal-switcher button {
+section section span .normal-switcher button {
     transition      : margin-left 200ms ease-out, background-color 200ms;
     background-color: var(--clr-text) !important;
     border-radius   : 0.4rem;
@@ -139,13 +139,13 @@ footer section span .normal-switcher button {
     border          : none;
 }
 
-footer section span #output {
+section section span #output {
     height     : max-content;
     white-space: normal;
     text-align : left;
 }
 
-footer section span #output::before {
+section section span #output::before {
     content    : '[Click to copy] ';
     color      : var(--clr-textL);
     text-shadow: none;

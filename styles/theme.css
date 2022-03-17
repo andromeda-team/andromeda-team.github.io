@@ -1,10 +1,21 @@
 .icon {
-    min-height: 1rem;
-    min-width: 1rem;
+    min-height: 1em;
+    min-width: 1em;
+    height: 1em;
+    width: 1em;
 }
 
 a {
     color: var(--blue);
+}
+
+a.local_link {
+    text-decoration: none;
+}
+
+a.local_link > .icon {
+    min-width: 1.5rem;
+    min-height: 1.5rem;
 }
 
 
@@ -43,6 +54,10 @@ a {
 
 .button.focus {
     background-color: var(--header-highlight);
+    color: var(--text);
+}
+
+.button.focus.pinned > .icon:last-child {
     color: var(--text);
 }
 
@@ -94,42 +109,31 @@ a {
 
 /* Inputs: */
 .input {
-    background-color: var(--input);
+    background-color: var(--header-highlight);
     border: none;
-    border-radius: 0.25rem;
-    color: var(--text-dimmed);
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    height: 2rem;
-}
-
-.input > input:focus {
-    outline: 2px solid var(--focus-outline);
-}
-
-.input > input {
-    background-color: transparent;
-    border: none;
-    width: calc(100% - 1rem);
     margin: 0;
     padding: 0 0.5rem;
+    height: 2rem;
     color: var(--text);
     font-size: 1rem;
     font-weight: lighter;
-    font-family: Ubuntu Mono, 'Courier New', Courier, monospace;
     border-radius: 0.25rem;
 }
 
-.input > button {
-    min-width: 2rem;
-    margin-left: auto;
-    margin-right: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0;
+.input:focus {
+    outline: 2px solid var(--focus-outline);
+}
+
+.input.with_an_icon {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.input.with_an_icon + label {
+    position: absolute;
+    margin: 0.5rem;
+    left: 0.5rem;
+    color: var(--text);
 }
 
 
@@ -147,6 +151,11 @@ a {
 .button.fit-parent.margin,
 .input.fit-parent.margin {
     width: calc(100% - 2rem);
+}
+
+.button.fit-parent.with_an_icon,
+.input.fit-parent.with_an_icon {
+    width: calc(100% - 3.5rem);
 }
 
 .button.fit-absolute,
@@ -175,6 +184,34 @@ main article {
     width: min(100% - 1.5rem, 48rem);
 }
 
+main article:target {
+    outline: 2px solid var(--focus-outline);
+    -webkit-animation: target-fade 500ms;
+    -moz-animation: target-fade 500ms;
+    -o-animation: target-fade 500ms;
+    animation: target-fade 500ms;
+}
+
+@-webkit-keyframes target-fade {
+	from { background-color: var(--header-highlight); } /* [1] */
+	to { background-color: var(--list); }
+}
+
+@-moz-keyframes target-fade {
+	from { background-color: var(--header-highlight); } /* [1] */
+	to { background-color: var(--list); }
+}
+
+@-o-keyframes target-fade {
+	from { background-color: var(--header-highlight); } /* [1] */
+	to { background-color: var(--list); }
+}
+
+@keyframes target-fade {
+	from { background-color: var(--header-highlight); } /* [1] */
+	to { background-color: var(--list); }
+}
+
 main h1 {
     margin: 0;
     font-size: 2.5rem;
@@ -185,17 +222,83 @@ main h2 {
     font-size: 1.35rem;
 }
 
+main h3 {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+main article ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main article ul li {
+    line-height: 1.5rem;
+}
+
 main article p {
     margin: 0.75rem 0;
+    line-height: 1.35rem;
 }
 
 main article p:last-child {
     margin-bottom: 0;
 }
 
+main article *.with_an_icon {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+main article *.with_an_icon.centered {
+    align-items: center;
+}
+
+main article *.with_an_icon.centered .icon {
+    display: flex;
+    margin: auto 0;
+}
+
+main article p.with_an_icon > *:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+main article em {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+main article em.hint {
+    display: block;
+    line-height: 0.8rem;
+    font-size: 0.8rem;
+}
+
+main article em.hint::after {
+    content: '';
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+main article em br {
+    line-height: 0.8rem;
+}
+
 code {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
+    font-family: Ubuntu Mono, 'Courier New', Courier, monospace;
+    white-space: nowrap;
+}
+
+code u {
+    text-decoration: none;
+    color: var(--green);
     font-family: Ubuntu Mono, 'Courier New', Courier, monospace;
 }

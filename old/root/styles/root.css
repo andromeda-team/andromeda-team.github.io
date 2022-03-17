@@ -133,7 +133,7 @@ header p {
     font-weight: 500;
 }
 
-footer {
+section {
     background-color: var(--clr-background);
     display         : flex;
     flex-direction  : column;
@@ -145,7 +145,7 @@ footer {
     padding         : 0 1rem 1rem 1rem;
 }
 
-footer section {
+section section {
     background-color: var(--clr-backgroundL);
     width           : calc(100% - 4rem);
     margin-top      : 1rem;

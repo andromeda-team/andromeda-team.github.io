@@ -5,13 +5,12 @@
     --header: hsl(0, 0%, 19%);
     --selection: hsl(0, 0%, 22%);
     --header-highlight: hsl(0, 0%, 27%);
-    --input: hsl(0, 0%, 29%);
-    --input-highlight: hsl(0, 0%, 33%);
     --focus-outline: hsl(212, 23%, 49%);
     --list: hsl(0, 0%, 21%);
 
     --sand: hsl(42, 100%, 76%);
-    --blue: hsl(213, 76%, 55%);
+    --blue: hsl(213, 100%, 67%);
+    --green: hsl(123, 73%, 59%);
 
     --text: hsl(0, 0%, 90%);
     --text-dimmed: hsl(0, 0%, 70%);
@@ -57,6 +56,7 @@ nav {
 }
 
 main {
+    width: calc(100% - var(--nav-size));
     color: var(--text);
     overflow: hidden;
 }
@@ -91,15 +91,17 @@ header > h1 {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+    color: var(--text);
 }
 
 header > h1 > .icon {
-    --dimensions: 1.5rem;
+    --dimensions: 2rem;
     width: var(--dimensions);
     height: var(--dimensions);
+    color: var(--text);
 }
 
-footer {
+section {
     background-color: var(--background);
     position: relative;
     width: 100%;
@@ -108,7 +110,7 @@ footer {
     overflow-y: hidden;
 }
 
-footer > div {
+section > div {
     width: 100%;
     height: calc(100% - 1rem);
     display: flex;
@@ -119,26 +121,36 @@ footer > div {
     overflow-y: auto;
 }
 
-main > footer {
+main > section {
     width: calc(100% - 1rem);
     height: calc(100% - 3rem);
     padding: 0 0.5rem;
     overflow-y: auto;
 }
 
-main > footer::after {
+main > section::after {
     content: '';
     display: block;
     height: 1rem;
 }
 
-hr {
+nav hr {
     outline: none;
     border: none;
     margin: 0;
     height: 1px;
     min-height: 1px;
     width: 100%;
+    background-color: var(--header-highlight);
+}
+
+main hr {
+    outline: none;
+    border: none;
+    margin: 0.5rem -0.7rem;
+    height: 1px;
+    min-height: 1px;
+    width: calc(100% + 1.4rem);
     background-color: var(--header-highlight);
 }
 
