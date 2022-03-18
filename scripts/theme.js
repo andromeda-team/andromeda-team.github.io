@@ -1,3 +1,7 @@
+initial_navbar_state(document.getElementById('current_navbar').value);
+initial_tab_state(document.getElementById('current_tab').value);
+
+
 [...document.getElementsByClassName('category')].forEach((category) => {
     category.addEventListener('click', () => {
         if (category.classList.contains('revealed')) {
@@ -15,16 +19,26 @@ function reveal_path(element) {
     }
 }
 
-
-// Initial navbar state:
-function initial_navbar_state(state) {
+function initial_state(state, className, execute) {
     if (!state) return;
-    [...document.getElementsByTagName('nav')[0].getElementsByClassName('button')].forEach((button) => {
-        let href = button.href || '';
+    let nav = document.getElementsByTagName('nav')[0];
+    if (!nav) return;
+
+    [...nav.getElementsByClassName(className)].forEach((element) => {
+        let href = element.href || '';
         if (href.includes(state)) {
-            button.classList.add('focus');
-            reveal_path(document.getElementById(button.parentElement.getAttribute('for')));
+            element.classList.add('selected');
+            execute(element);
         }
     });
 }
-initial_navbar_state(document.getElementById('current_page').value);
+
+function initial_navbar_state(state) {
+    initial_state(state, 'button', function (element) {
+        reveal_path(document.getElementById(element.parentElement.getAttribute('for')));
+    });
+}
+
+function initial_tab_state(state) {
+    initial_state(state, 'tab', function(_) {});
+}
