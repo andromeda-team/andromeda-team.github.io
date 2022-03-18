@@ -21,11 +21,9 @@ function reveal_path(element) {
 
 function initial_state(state, className, execute) {
     if (!state) return;
-    let nav = document.getElementsByTagName('nav')[0];
-    if (!nav) return;
 
-    [...nav.getElementsByClassName(className)].forEach((element) => {
-        let href = element.href || '';
+    [...document.getElementsByClassName(className)].forEach((element) => {
+        let href = element.getAttribute('href') || '';
         if (href.includes(state)) {
             element.classList.add('selected');
             execute(element);
@@ -35,7 +33,9 @@ function initial_state(state, className, execute) {
 
 function initial_navbar_state(state) {
     initial_state(state, 'button', function (element) {
-        reveal_path(document.getElementById(element.parentElement.getAttribute('for')));
+        if (element.parentElement.tagName == 'label') {
+            reveal_path(document.getElementById(element.parentElement.getAttribute('for')));
+        }
     });
 }
 

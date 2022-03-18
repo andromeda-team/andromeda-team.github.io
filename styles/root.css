@@ -119,6 +119,11 @@ label.category_list {
     left: 0;
 }
 
+main {
+    height: calc(100% - 3rem);
+    overflow-y: auto;
+}
+
 hr {
     border: none;
     outline: none;

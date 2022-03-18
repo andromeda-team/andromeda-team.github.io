@@ -60,6 +60,10 @@ button.button.nav {
     background-color: var(--background-hover);
 }
 
+.button.nav.selected {
+    background-color: var(--header-hover);
+}
+
 .button.tab:hover {
     background-color: var(--section);
 }
