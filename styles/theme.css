@@ -1,4 +1,110 @@
 .icon {
+    min-height: 1rem;
+    min-width: 1rem;
+}
+
+.button {
+    transition: background-color var(--speed);
+    background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+    font-size: 1rem;
+    font-family: var(--font);
+}
+
+span.button,
+a.button {
+    height: 1.25rem;
+}
+
+button.button {
+    height: 2.25rem;
+}
+
+input.input {
+    height: 1.25rem;
+}
+
+.button > span { margin-top: 1px; } /* Work around */
+
+.button > .icon_secondary {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button:focus,
+.input:focus {
+    outline: 2px solid var(--focus);
+}
+
+.button.nav,
+.input.nav {
+    width: calc(100% - 2rem);
+    margin: 0 0.5rem;
+}
+
+button.button.nav {
+    width: calc(100% - 1rem);
+}
+
+.button.nav:hover {
+    background-color: var(--background-hover);
+}
+
+.button.tab:hover {
+    background-color: var(--section);
+}
+
+.button.tab.selected {
+    background-color: var(--header-hover);
+}
+
+
+.input {
+    transition: background-color var(--speed);
+    background-color: var(--input);  
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+    font-size: 1rem;
+    font-family: var(--font);
+    width: fit-content;
+}
+
+
+.input.with_icon {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.input.with_icon + label {
+    position: absolute;
+    margin: 0.6rem;
+    left: 0.5rem;
+}
+
+.input.nav.with_icon {
+    width: calc(100% - 3.5rem);
+}
+
+/* .icon {
     min-height: 1em;
     min-width: 1em;
     height: 1em;
@@ -19,7 +125,7 @@ a.local_link > .icon {
 }
 
 
-/* Buttons: */
+/* Buttons: *\/
 .button {
     background-color: transparent;
     color: var(--text-dimmed);
@@ -107,7 +213,7 @@ a.local_link > .icon {
 }
 
 
-/* Inputs: */
+/* Inputs: *\/
 .input {
     background-color: var(--header-highlight);
     border: none;
@@ -137,7 +243,7 @@ a.local_link > .icon {
 }
 
 
-/* Inputs/Buttons: */
+/* Inputs/Buttons: *\/
 .button.margin,
 .input.margin {
     margin: 0 0.5rem;
@@ -169,7 +275,7 @@ a.local_link > .icon {
 }
 
 
-/* Other: */
+/* Other: *\/
 main .center {
     margin: 0 auto;
     text-align: center;
@@ -193,22 +299,22 @@ main article:target {
 }
 
 @-webkit-keyframes target-fade {
-	from { background-color: var(--header-highlight); } /* [1] */
+	from { background-color: var(--header-highlight); } /* [1] *\/
 	to { background-color: var(--list); }
 }
 
 @-moz-keyframes target-fade {
-	from { background-color: var(--header-highlight); } /* [1] */
+	from { background-color: var(--header-highlight); } /* [1] *\/
 	to { background-color: var(--list); }
 }
 
 @-o-keyframes target-fade {
-	from { background-color: var(--header-highlight); } /* [1] */
+	from { background-color: var(--header-highlight); } /* [1] *\/
 	to { background-color: var(--list); }
 }
 
 @keyframes target-fade {
-	from { background-color: var(--header-highlight); } /* [1] */
+	from { background-color: var(--header-highlight); } /* [1] *\/
 	to { background-color: var(--list); }
 }
 
@@ -301,4 +407,4 @@ code u {
     text-decoration: none;
     color: var(--green);
     font-family: Ubuntu Mono, 'Courier New', Courier, monospace;
-}
+} */
