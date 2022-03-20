@@ -19,6 +19,7 @@
     white-space: nowrap;
     font-size: 1rem;
     font-family: var(--font);
+    font-weight: bold;
 }
 
 span.button,
