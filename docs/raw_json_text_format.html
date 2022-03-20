@@ -162,14 +162,25 @@
                         <b>Example:</b> <code class="inline">{"color":"red"}</code> <em class="extra">("key":"value")</em>
                     </p>
                 </article>
+                <article>
+                    <h1>
+                        Client side
+                    </h1>
+                    <p>
+                        Some components have a (Client) prefix. It means, that it may display different text for different players.
+                    </p>
+                </article>
                 <article id="plain-text">
-                    <h1><code class="inline title">text</code> Plain text</h1>
+                    <h1>
+                        <code class="inline title">text</code>
+                        Plain text
+                    </h1>
                     <p>
                         Is a static type used to define plain text.
                     </p>
                     <hr/>
                     <p>
-                        Coresponding values:
+                        <b>Syntax:</b>
                         <ul>
                             <li>Any string ( <code class="inline">"Your text"</code> )</li>
                         </ul>
@@ -179,277 +190,188 @@
                         <b>Example:</b> <code class="inline">{"text":"Hello World!"}</code> will display as <code class="inline">Hello World!</code>
                     </p>
                 </article>
-
-
-
-
-                
-                <br/><br/><br/><br/><br/><br/><br/><br/>
-                <article>
-                    <h2>Raw JSON Text Format</h2>
-                    <p>
-                        Is a versatile and powerful text format used in minecraft commands and files. Just name a few:
-                        <ul>
-                            <li><code>/tellraw</code> command;</li>
-                            <li><code>/say</code> command <em>(op only)</em>;</li>
-                            <li><code>/title</code> command;</li>
-                            <li><code>*.mcmeta</code> files;</li>
-                            <li>entity/item names;</li>
-                            <li>item description;</li>
-                        </ul>
-                    </p>
-                    <p>
-                        In case of commands, it's a one-line JSON interpretation, so for better understanding it is recommended to understand <a href="#json_format_basics">basics of how JSON Format works</a>.
-                    </p>
-                </article>
-                <article id="json_format_basics">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#json_format_basics">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>JSON Format basics</span>
-                    </h2>
-                    <p>
-                        JSON is based on a key-value system, which is simply <code>key:value</code> - For every key (a string) there's a value, which can be an Object, an Array, an Integer, a String and so on.
-                    </p>
-                    <p>
-                        As an example, if you want to give our text a color we could do <code>"color":"green"</code>.
-                    </p>
-                    <p>
-                        In case of arrays/objects we could do: <code>"my_pets":["Jean", "Paul"]</code> and so forth.
-                    </p>
-                    <p>
-                        In minecraft there are different <b>keys</b> mojang gave us access to, as well as coresponding list of valid <b>values</b> that we can use.
-                    </p>
-                    <p>
-                        The most important part, in order to use a string you must wrap it into double quotes <code>""</code>, <b>but for JSON to work you must wrap everything in curly braces <code>{}</code>.</b>
-                    </p>
-                </article>
-                <article id="plain_text">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#plain_text">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>Plain text</span>
-                    </h2>
-                    <p>
-                        If we want to say <code>Hello World!</code> in chat, what we could do is use <code>/tellraw @a "Hello World!"</code>, by simply putting the text into double quotes.
-                    </p>
-                    <p>
-                        If we want to send the same message but using JSON, we should use <code>/tellraw @a <u>{"text":</u>"Hello World!"<u>}</u></code>. Here we used the <code>text</code> key, which defines the plain text element. <em>(Note: These two commands will output the same result in chat)</em>
-                    </p>
-                    <hr/>
-                    <p>
-                        There are some versatile keys, that we can use to beautify our text:
-                        <ul>
-                            <li>
-                                <code>"color":"VALUE"</code> changes color of the text. You can replace <code>VALUE</code> with:
-                                <ul>
-                                    <li>dark_red, red, gold, yellow, dark_green, green, aqua, dark_aqua, dark_blue, blue, light_purple, dark_purple, white, gray, dark_gray, black</li>
-                                    <li>
-                                        reset
-                                        <em class="hint">Resets the color to default one</em>
-                                    </li>
-                                    <li>
-                                        #XXXXXX (HEX Color Format)
-                                        <em class="hint">In versions 1.16+ there's a possibility to use HEX Color Format for any custom color. (<b>example</b>: <code>#454545</code>)</em>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <code>"bold":VALUE</code> sets whether the text is bold. You can replace <code>VALUE</code> with:
-                                <ul>
-                                    <li>true</li>
-                                    <li>false</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <code>"italic":VALUE</code> sets whether the text is italic. You can replace <code>VALUE</code> with:
-                                <ul>
-                                    <li>true</li>
-                                    <li>false</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <code>"underlined":VALUE</code> sets whether the text is underlined. You can replace <code>VALUE</code> with:
-                                <ul>
-                                    <li>true</li>
-                                    <li>false</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <code>"strikethrough":VALUE</code> sets whether the text is strikethrough. You can replace <code>VALUE</code> with:
-                                <ul>
-                                    <li>true</li>
-                                    <li>false</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <code>"obfuscated":VALUE</code> sets whether the text is obfuscated. This means that all symbols will replace with a random character making text completely unreadable. You can replace <code>VALUE</code> with:
-                                <ul>
-                                    <li>true</li>
-                                    <li>false</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </p>
-                    <hr/>
-                    <p>
-                        As well as behavior controlling keys:
-                        <ul>
-                            <li>
-                                <code>"clickEvent":{"action":"ACTION", "value":"VALUE"}</code> sets the event to occur when text is clicked by player <b>(only works in chat)</b>. <code>ACTION</code> can be set to:
-                                <ul>
-                                    <li>
-                                        run_command
-                                        <em class="hint">Despite the name of this value it sends a <b>message</b> as player who clicked the text. In order to run a command just use <code>/</code> in the very beginning.</em>
-                                    </li>
-                                    <li>
-                                        suggest_command
-                                        <em class="hint">Replaces player's chat input field with a specified string. Extremely useful for user input suggestions.</em>
-                                    </li>
-                                    <li>
-                                        open_url
-                                        <em class="hint">Opens specified url in player's browser (displays a confirm window first)</em>
-                                    </li>
-                                    <li>
-                                        copy_to_clipboard
-                                        <em class="hint">[1.15+] Copies specified string into player's system clipboard.</em>
-                                    </li>
-                                    <li>
-                                        change_page
-                                        <em class="hint">Works only in books, changes the page.</em>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <code>"hoverEvent":{"action":"ACTION", "contents":CONTENTS}</code> sets the event to occur when text is hovered by player <b>(only works in chat)</b>. <code>ACTION</code> can be set to:
-                                <ul>
-                                    <li>
-                                        show_text
-                                        <em class="hint">Displays text in JSON/String format</em>
-                                    </li>
-                                    <li>
-                                        show_item
-                                        <em class="hint">Displays an item tooltip, as if it was hovered in inventory.</em> Accepts the following parameters:
-                                        <ul>
-                                            <li>
-                                                id
-                                                <em class="hint">
-                                                    the id of an item. Example: <code>minecraft:diamond</code>
-                                                </em>
-                                            </li>
-                                            <li>
-                                                count
-                                            </li>
-                                            <li>
-                                                tag (optional)
-                                                <em class="hint">
-                                                    the tag of an item. Example: <code>{display:{Name:'"MY DIAMOND!"'}}</code>
-                                                </em>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        show_entity
-                                        <em class="hint">Displays an entity's name, type, and UUID.</em> Accepts the following parameters:
-                                        <ul>
-                                            <li>
-                                                id
-                                                <em class="hint">
-                                                    the UUID of an entity.
-                                                </em>
-                                            </li>
-                                            <li>
-                                                type
-                                                <em class="hint">
-                                                    the type of an entity. Example: <code>minecraft:creeper</code>
-                                                </em>
-                                            </li>
-                                            <li>
-                                                name (optional)
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </p>
-                </article>
                 <article id="translate">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#translate">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>Translate</span>
-                    </h2>
+                    <h1>
+                        <code class="inline title">translate</code>
+                        Multilanguage text
+                    </h1>
                     <p>
-                        ...
+                        (Client) Contains a value, which is used by resourcepack to change its contents depending on the language. By default inherits from <code class="inline">en_us.json</code>
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Syntax:</b>
+                        <ul>
+                            <li>Any string ( <code class="inline">"Your translatable key"</code> )</li>
+                        </ul>
+                    </p>
+                    <hr/>
+                    <p>
+                        You can create your own keys for your own translations. The full list of vanilla keys can be found the <a href="!TODO">Vanilla Resourcepack</a>
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Example:</b> <code class="inline">{"translate":"block.minecraft.gray_wool"}</code> will display as <code class="inline">Gray Wool</code> in US English, <code class="inline">Grey Wool</code> in UK English, etc.
                     </p>
                 </article>
-                <article id="entity_selectors">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#entity_selectors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>Entity selectors</span>
-                    </h2>
+                <article id="entity-selectors">
+                    <h1>
+                        <code class="inline title">selector</code>
+                        Entity selectors
+                    </h1>
                     <p>
-                        ...
+                        Inserts an entity's name with a <a href="#hoverEvent">hoverEvent</a> set to display this entity's UUID and type.
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Syntax:</b>
+                        <ul>
+                            <li>String with a selector inside</li>
+                        </ul>
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Examples:</b>
+                        <ul>
+                            <li>
+                                <code class="inline">{"selector":"@e[distance=..1]"}</code> would display a list of entities in radius of a block.
+                            </li>
+                            <li>
+                                <code class="inline">{"selector":"@p"}</code> would display the nearest player.
+                            </li>
+                        </ul>
                     </p>
                 </article>
-                <article id="scores">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#scores">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>Scores</span>
-                    </h2>
+                <article id="score">
+                    <h1>
+                        <code class="inline title">score</code>
+                        Score
+                    </h1>
                     <p>
-                        ...
+                        Displays a score value (integer) of a specific scoreboard. Used to insert variables into text.
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Syntax:</b>
+                        <ul>
+                            <li>
+                                <code class="inline">"score": {</code>
+                            </li>
+                            <ul>
+                                <li>
+                                    <code class="inline">"objective":"Scoreboard name"</code>
+                                </li>
+                                <li>
+                                    <code class="inline">"name":"Entity selector/Fake player"</code>
+                                </li>
+                            </ul>
+                            <li>
+                                <code class="inline">}</code>
+                            </li>
+                        </ul>
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Example:</b>
+                        <code class="inline">{"score":{"objective":"my_scoreboard", "name":"@p"}}</code> would display the my_scoreboard's score of nearest player
                     </p>
                 </article>
                 <article id="keybind">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#keybind">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>Keybinds</span>
-                    </h2>
+                    <h1>
+                        <code class="inline title">keybind</code>
+                        Keybind
+                    </h1>
                     <p>
-                        ...
+                        (Client) Displays a keybind player has set in controls settings for a specific action.
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Syntax:</b>
+                        <ul>
+                            <li>String containing the keybind key</li>
+                        </ul>
+                    </p>
+                    <hr/>
+                    <p>
+                        <details>
+                            <summary>Complete list of all keybinds:</summary>
+                            <div>
+                                <code class="inline">key.advancements</code>,
+                                <code class="inline">key.back</code>,
+                                <code class="inline">key.chat</code>,
+                                <code class="inline">key.command</code>,
+                                <code class="inline">key.drop</code>,
+                                <code class="inline">key.forward</code>,
+                                <code class="inline">key.fullscreen</code>,
+                                <code class="inline">key.hotbar.1</code>,
+                                <code class="inline">key.hotbar.2</code>,
+                                <code class="inline">key.hotbar.3</code>,
+                                <code class="inline">key.hotbar.4</code>,
+                                <code class="inline">key.hotbar.5</code>,
+                                <code class="inline">key.hotbar.6</code>,
+                                <code class="inline">key.hotbar.7</code>,
+                                <code class="inline">key.hotbar.8</code>,
+                                <code class="inline">key.hotbar.9</code>,
+                                <code class="inline">key.inventory</code>,
+                                <code class="inline">key.jump</code>,
+                                <code class="inline">key.left</code>,
+                                <code class="inline">key.loadToolbarActivator</code>,
+                                <code class="inline">key.pickItem</code>,
+                                <code class="inline">key.playerlist</code>,
+                                <code class="inline">key.right</code>,
+                                <code class="inline">key.saveToolbarActivator</code>,
+                                <code class="inline">key.screenshot</code>,
+                                <code class="inline">key.smoothCamera</code>,
+                                <code class="inline">key.sneak</code>,
+                                <code class="inline">key.spectatorOutlines</code>,
+                                <code class="inline">key.sprint</code>,
+                                <code class="inline">key.swapOffhand</code>,
+                                <code class="inline">key.togglePerspective</code>,
+                                <code class="inline">key.use</code>.
+                            </div>
+                            <span class="overflow"></span>
+                        </details>
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Example:</b>
+                        <code class="inline">{"keybind":"key.jump"}</code> (if player didn't change the keybind) will display spacebar
                     </p>
                 </article>
                 <article id="nbt">
-                    <h2 class="with_an_icon centered">
-                        <a class="local_link" href="#nbt">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                            </svg>
-                        </a>
-                        <span>NBT Selectors</span>
-                    </h2>
+                    <h1>
+                        <code class="inline title">nbt</code>
+                        NBT Path
+                    </h1>
                     <p>
-                        ...
+                        Can display all kinds of NBT Data as well as <b>interpret it</b>, which is extremely powerful.
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Syntax:</b>
+                        <ul>
+                            <li><code class="inline">"nbt"</code></li>
+                            <ul>
+                                <li>
+                                    <code class="inline">"NBT Path"</code>
+                                </li>
+                            </ul>
+                            <li>
+                                <code class="inline">"entity"/"storage"/"block</code> (one of three) an NBT source, should be followed by a <b>string</b>
+                            </li>
+                            <li>
+                                <code class="inline">"interpret"</code> (optional) can be set to <b>true</b> or <b>false</b>. Specifies whether NBT should be turned into a formatted text.
+                            </li>
+                        </ul>
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Examples:</b>
+                        <ul>
+                            <li><code class="inline">{"nbt":"SelectedItem.Count", "entity":"@p", "interpret":true}</code> will display the amount of items nearest player is currently holding</li>
+                            <li><code class="inline">{"nbt":"Items", "block":"~ ~-1 ~", "interpret":true}</code> will display all items inside an entity block underneath</li>
+                            <li><code class="inline">{"nbt":"Some.Random.Path[0]", "storage":"minecraft:my_storage"}</code> will display the contents of <code class="inline">Some.Random.Path[0]</code> of a storage named <code class="inline">minecraft:my_storage</code> in its pure way. (Kind of like <code class="inline">/data get storage</code> would display)</li>
+                        </ul>
                     </p>
                 </article>
             </main>

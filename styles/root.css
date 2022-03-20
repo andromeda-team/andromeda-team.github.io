@@ -88,9 +88,9 @@ header {
     scroll-snap-align: start;
 }
 
-@media only screen and (max-width: 12rem) { #panel span { display: none; } }
+@media only screen and (max-width: 12rem) { #panel header span { display: none; } }
 
-@media only screen and (max-width: 50rem) { #page span { display: none; } }
+@media only screen and (max-width: 50rem) { #page header span { display: none; } }
 
 .category_list,
 nav {
