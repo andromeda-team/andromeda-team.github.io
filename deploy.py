@@ -35,10 +35,11 @@ def include_html(path):
                 lines_new.append(line)
 
     open(path, "w").writelines(lines_new)
+    html_files.remove(path)
 
 
 if __name__ == '__main__':
     if input('Would you like to run in INCLUDE mode? [Y/n] ').upper() == "Y":
         html_files = list(parse_html_files())
         while len(html_files) > 0:
-            include_html(html_files.pop())
+            include_html(html_files[0])
