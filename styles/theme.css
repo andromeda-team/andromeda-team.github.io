@@ -107,3 +107,59 @@ button.button.nav {
 .input.nav.with_icon {
     width: calc(100% - 3.5rem);
 }
+
+
+article {
+    background-color: var(--section);
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+article hr {
+    margin-left: -0.5rem;
+    width: calc(100% + 1rem);
+}
+
+article h1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+article p {
+    line-height: 1.35rem;
+    margin: 1rem 0;
+}
+
+article p:last-child {
+    margin-bottom: 0;
+}
+
+article em.extra {
+    font-style: normal;
+    color: var(--text-description)
+}
+
+article code.inline {
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.25rem;
+    display: inline-block;
+    background-color: var(--background);
+    font-family: var(--font-monospace);
+    width: max-content;
+    font-size: 1rem;
+}
+
+article code.title {
+    background-color: var(--text);
+    color: var(--background);
+    font-weight: bold;
+}
+
+article ul {
+    margin-top: -0.5rem;
+}
