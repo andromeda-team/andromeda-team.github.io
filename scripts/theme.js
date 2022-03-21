@@ -1,5 +1,4 @@
 initial_navbar_state(document.getElementById('current_navbar').value);
-initial_tab_state(document.getElementById('current_tab').value);
 
 
 [...document.getElementsByClassName('category')].forEach((category) => {
@@ -33,12 +32,8 @@ function initial_state(state, className, execute) {
 
 function initial_navbar_state(state) {
     initial_state(state, 'button', function (element) {
-        if (element.parentElement.tagName == 'label') {
+        if (element.parentElement.classList.contains('category_list')) {
             reveal_path(document.getElementById(element.parentElement.getAttribute('for')));
         }
     });
-}
-
-function initial_tab_state(state) {
-    initial_state(state, 'tab', function(_) {});
 }

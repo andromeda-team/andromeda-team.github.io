@@ -109,6 +109,10 @@ button.button.nav {
     width: calc(100% - 3.5rem);
 }
 
+.input.property {
+    background-color: var(--section);
+}
+
 
 article {
     outline: 1px solid var(--outline);
@@ -139,6 +143,13 @@ article p {
     margin: 1rem 0;
 }
 
+article p.properties {
+    background-color: var(--background);
+    outline: 1px solid var(--outline);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
 article p:last-child {
     margin-bottom: 0;
 }
@@ -146,6 +157,15 @@ article p:last-child {
 article em.extra {
     font-style: normal;
     color: var(--text-description)
+}
+
+article em.description {
+    font-style: normal;
+    color: var(--text-description);
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 article code.inline {
@@ -157,6 +177,46 @@ article code.inline {
     width: fit-content;
     font-size: 1rem;
     white-space: normal;
+}
+
+article .code-block {
+    display: block;
+    background-color: var(--background);
+    border-radius: 0.5rem;
+    font-family: var(--font-monospace);
+    font-size: 1rem;
+    white-space: normal;
+    padding: 0.5rem 0;
+    margin: -0.5rem 0;
+    border-left: 2rem solid transparent;
+    list-style: none;
+    counter-reset: mycounter;
+    width: calc(100% - 2rem);
+}
+
+article .code-block li {
+    position: relative;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    line-height: 1.5rem;
+    display: block;
+}
+
+article .code-block li:nth-child(even) {
+    background-color: var(--background-dimmed);
+}
+
+article .code-block li::before {
+    content: counter(mycounter); 
+    counter-increment: mycounter;
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    width: 2rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    color: var(--text-description);
+    text-align: center;
 }
 
 article code.title {
@@ -233,4 +293,20 @@ article details div::after {
 
 article details[open] {
     height: 8rem;
+}
+
+article span.insert {
+    background-color: var(--dark-blue);
+    padding: 0.125rem 0.25rem;
+    margin: -0.125rem -0.25rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+}
+
+article span.insert.no-format {
+    background-color: transparent;
+}
+
+article span.comment {
+    color: var(--text-description);
 }
