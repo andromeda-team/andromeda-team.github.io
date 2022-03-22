@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/theme.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.svg">
     <script src="/scripts/theme.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
     <title>Documentation - Andromeda Team</title>
     <!-- END INCLUDING assets/site_components/head.html -->
 </head>
@@ -188,19 +189,39 @@
                         <label for="scoreboard"><em class="description"><b>Scoreboard</b> replacing the <b>n</b> variable.</em></label>
                         <input type="text" id="path" class="input property" placeholder="entity @s Inventory">
                         <label for="path"><em class="description"><b>Path</b> which should be parsed. Don't put the <code class="inline">[n]</code> in the end, it will be added automatically</em></label>
+                        <input type="text" id="temp" class="input property" placeholder="storage minecraft:temp Instance">
+                        <label for="temp"><em class="description"><b>Path</b> that will be used as a temporary placeholder.</em></label>
                     </p>
                     <p>
                         Function <code class="inline"><span class="insert no-format" data-var="workspace">namespace:my/path/parse</span></code>:
                         <ol class="code-block">
                             <li><span class="comment">1. We need to create a temporary data holder, which we can modify without losing any data:</span></li>
-                            <li>data modify storage minecraft:temp Parsing set from <span class="insert" data-var="path">entity @s Inventory</span></li>
-                            <li><span class="comment">#</span></li>
-                            <li><span class="comment"># 2. We create a counter, that will start with the size of the array and decrease in a loop:</span></li>
+                            <li>data modify <span class="insert" data-var="temp">storage minecraft:temp Instance</span>.Parsing set from <span class="insert" data-var="path">entity @s Inventory</span></li>
+                            <li><br></li>
+                            <li><span class="comment"># 2. We create a counter, that will start with the size of the array and decrease in a loop, as well as a result placeholder:</span></li>
                             <li>execute store result score #Counter <span class="insert" data-var="scoreboard">my_scoreboard</span> run data get <span class="insert" data-var="path">entity @s Inventory</span></li>
-                            <li><span class="comment">#</span></li>
+                            <li>data remove <span class="insert" data-var="temp">storage minecraft:temp Instance</span>.Match</li>
+                            <li><br></li>
                             <li><span class="comment"># 3. Then if the array isn't empty we start a loop:</span></li>
-                            <li>execute if score #Counter <span class="insert" data-var="scoreboard">my_scoreboard</span> matches 1.. run function <span class="insert" data-var="workspace">namespace:my/path/parse</span>_loop
+                            <li>execute if score #Counter <span class="insert" data-var="scoreboard">my_scoreboard</span> matches 1.. run function <span class="insert" data-var="workspace">namespace:my/path/parse</span>_step
                         </ol>
+                    </p>
+                    <p>
+                        Function <code class="inline"><span class="insert no-format" data-var="workspace">namespace:my/path/parse</span>_step</code>:
+                        <ol class="code-block">
+                            <li><span class="comment"># Decrement counter</span></li>
+                            <li>scoreboard players remove #Counter <span class="insert" data-var="scoreboard">my_scoreboard</span> 1</li>
+                            <li><br/></li>
+                            <li><span class="comment"># 4. We remove the last element of the array</span></li>
+                            <li>data remove <span class="insert" data-var="temp">storage minecraft:temp Instance</span>.Parsing[-1]</li>
+                            <li><br/></li>
+                            <li><span class="comment"># Repeat the function or return the field depending on the counter:</span></li>
+                            <li>execute if score #Counter <span class="insert" data-var="scoreboard">my_scoreboard</span> matches ..0 run data modify <span class="insert" data-var="temp">storage minecraft:temp Instance</span>.Match set from <span class="insert" data-var="temp">storage minecraft:temp Instance</span>.Parsing[-1]</li>
+                            <li>execute if score #Counter <span class="insert" data-var="scoreboard">my_scoreboard</span> matches 1.. run function <span class="insert" data-var="workspace">namespace:my/path/parse</span>_step</li>
+                        </ol>
+                    </p>
+                    <p>
+                        In the end we will have our result by using <code class="inline">data get <span class="insert" data-var="temp">storage minecraft:temp Instance</span>.Match</code>
                     </p>
                 </article>
             </main>

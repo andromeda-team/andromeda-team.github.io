@@ -296,7 +296,7 @@ article details[open] {
 }
 
 article span.insert {
-    background-color: var(--dark-blue);
+    background-color: var(--background-hover);
     padding: 0.125rem 0.25rem;
     margin: -0.125rem -0.25rem;
     border-radius: 0.25rem;
