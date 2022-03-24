@@ -168,6 +168,10 @@ article em.description {
     margin-bottom: 0.5rem;
 }
 
+article h1 + em.description {
+    margin-top: 1rem;
+}
+
 article code.inline {
     border-radius: 0.25rem;
     padding: 0.125rem 0.25rem;
