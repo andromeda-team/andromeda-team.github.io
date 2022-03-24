@@ -137,7 +137,7 @@
                         Is a versatile and powerful format used in minecraft commands and files. It is used for entity/item names, item descriptions, .mcmeta files and more.
                     </p>
                     <p>
-                        JSON is based on a key-value <em class="extra">(key to value)</em> system. In case of minecraft the <b>key</b> is always a string. There's a limited set of keys, and coresponding set of values it can accept <br>
+                        JSON is based on a key-value <em class="extra">(key to value)</em> system. In case of minecraft the <b>key</b> is always a string. There's a limited set of keys, and corresponding set of values it can accept <br>
                         <b>Example:</b> <code class="inline">{"color":"red"}</code> <em class="extra">("key":"value")</em>
                     </p>
                 </article>
@@ -174,7 +174,7 @@
                         Multilanguage text
                     </h1>
                     <p>
-                        (Client) Contains a value, which is used by resourcepack to change its contents depending on the language. By default inherits from <code class="inline">en_us.json</code>
+                        (Client) Contains a value, which is used by resourcepack to change its contents depending on the language. By default, inherits from <code class="inline">en_us.json</code>
                     </p>
                     <p>
                         <b>Syntax:</b>
@@ -247,7 +247,7 @@
                     <hr/>
                     <p>
                         <b>Example:</b>
-                        <code class="inline">{"score":{"objective":"my_scoreboard", "name":"@p"}}</code> would display the my_scoreboard's score of nearest player
+                        <code class="inline">{"score":{"objective":"my_scoreboard", "name":"@p"}}</code> would display my_scoreboard's score of nearest player
                     </p>
                 </article>
                 <article id="keybind">
@@ -339,7 +339,7 @@
                     <p>
                         <b>Examples:</b>
                         <ul>
-                            <li><code class="inline">{"nbt":"SelectedItem.Count", "entity":"@p", "interpret":true}</code> will display the amount of items nearest player is currently holding</li>
+                            <li><code class="inline">{"nbt":"SelectedItem.Count", "entity":"@p", "interpret":true}</code> will display the amount of items the nearest player is currently holding</li>
                             <li><code class="inline">{"nbt":"Items", "block":"~ ~-1 ~", "interpret":true}</code> will display all items inside an entity block underneath</li>
                             <li><code class="inline">{"nbt":"Some.Random.Path[0]", "storage":"minecraft:my_storage"}</code> will display the contents of <code class="inline">Some.Random.Path[0]</code> of a storage named <code class="inline">minecraft:my_storage</code> in its pure way. (Kind of like <code class="inline">/data get storage</code> would display)</li>
                         </ul>

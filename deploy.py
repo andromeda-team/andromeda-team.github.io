@@ -6,7 +6,8 @@ import itertools
 HTML_PARSE_BLACKLIST = ()
 html_files = []
 
-def parse_html_files(): # Note: this function returns an iterator
+
+def parse_html_files():  # Note: this function returns an iterator
     return (str(path) for path in Path(".").rglob("*.html") if not str(path).startswith(HTML_PARSE_BLACKLIST))
 
 
