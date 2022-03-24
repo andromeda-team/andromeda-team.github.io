@@ -314,3 +314,7 @@ article span.insert.no-format {
 article span.comment {
     color: var(--text-description);
 }
+
+del * {
+    text-decoration: line-through;
+}

@@ -79,7 +79,7 @@
                         <!-- END INCLUDING assets/icons/text.svg -->
                         <span>Introduction</span>
                     </a>
-                    <a class="button nav" href="">
+                    <a class="button nav" href="/docs/nbt_data/command_alternatives.html#page">
                         <!-- INCLUDE assets/icons/command.svg -->
                         <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon">
                             <path d="m2 0c-1.108 0-2 0.892-2 2v12c0 1.108 0.892 2 2 2h12c1.108 0 2-0.892 2-2v-12c0-1.108-0.892-2-2-2zm1 2h10c0.554 0 1 0.446 1 1v10c0 0.554-0.446 1-1 1h-10c-0.554 0-1-0.446-1-1v-10c0-0.554 0.446-1 1-1zm2.5 10 3-8h2l-3 8z"/>
@@ -138,6 +138,15 @@
                     </p>
                     <p>
                         The way we access NBT through commands is more similar to JSON format, and isn't very complex.
+                    </p>
+                </article>
+                <article id="optimization">
+                    <h1>Optimization</h1>
+                    <p>
+                        Unfortunately, any command directly connected to NBT Data, such as <code class="inline">/data</code>, <code class="inline">@...[nbt={}]</code>, <code class="inline">execute if data</code>, etc. Are creating big latency issues when used. It creates lags, freezes, unsyncs, unexpected entity jittering and more.
+                    </p>
+                    <p>
+                        This is the reason why it is always a better practice to use interfaces - commands, that don't directly change NBT data. You can read more about them on <a href="/docs/nbt_data/command_alternatives.html#page">Command alternatives</a> page.
                     </p>
                 </article>
             </main>
