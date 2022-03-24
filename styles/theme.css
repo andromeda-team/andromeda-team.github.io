@@ -121,6 +121,7 @@ article {
     padding: 0.5rem;
     margin: 1rem auto;
     border-radius: 0.5rem;
+    overflow-x: auto;
 }
 
 article hr {
@@ -179,8 +180,8 @@ article code.inline {
     background-color: var(--background);
     font-family: var(--font-monospace);
     width: fit-content;
-    font-size: 1rem;
     white-space: normal;
+    font-size: 1rem;
 }
 
 article .code-block {
