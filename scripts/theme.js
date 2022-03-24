@@ -12,6 +12,8 @@ initial_navbar_state(document.getElementById('current_navbar').value);
 });
 
 function reveal_path(element) {
+    if (element == null) return
+
     element.classList.add('revealed');
     if (element.parentElement.tagName == 'label') {
         reveal_path(document.getElementById(element.parentElement.getAttribute('for')));
