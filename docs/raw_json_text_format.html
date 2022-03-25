@@ -130,7 +130,6 @@
             </header>
             <!-- END INCLUDING assets/site_components/tabs.html -->
             <main>
-                <br/>
                 <article id="description">
                     <h1>Raw JSON Text Format</h1>
                     <p>
@@ -159,10 +158,10 @@
                     </p>
                     <p>
                         <b>Syntax:</b>
+                    </p>
                         <ul>
                             <li>Any string ( <code class="inline">"Your text"</code> )</li>
                         </ul>
-                    </p>
                     <hr/>
                     <p>
                         <b>Example:</b> <code class="inline">{"text":"Hello World!"}</code> will display as <code class="inline">Hello World!</code>
@@ -178,10 +177,10 @@
                     </p>
                     <p>
                         <b>Syntax:</b>
+                    </p>
                         <ul>
                             <li>Any string ( <code class="inline">"Your translatable key"</code> )</li>
                         </ul>
-                    </p>
                     <p>
                         You can create your own keys for your own translations. The full list of vanilla keys can be found the <a href="!TODO">Vanilla Resourcepack</a>
                     </p>
@@ -200,13 +199,14 @@
                     </p>
                     <p>
                         <b>Syntax:</b>
+                    </p>
                         <ul>
                             <li>String with a selector inside</li>
                         </ul>
-                    </p>
                     <hr/>
                     <p>
                         <b>Examples:</b>
+                    </p>
                         <ul>
                             <li>
                                 <code class="inline">{"selector":"@e[distance=..1]"}</code> would display a list of entities in radius of a block.
@@ -215,7 +215,6 @@
                                 <code class="inline">{"selector":"@p"}</code> would display the nearest player.
                             </li>
                         </ul>
-                    </p>
                 </article>
                 <article id="score">
                     <h1>
@@ -227,6 +226,7 @@
                     </p>
                     <p>
                         <b>Syntax:</b>
+                    </p>
                         <ul>
                             <li>
                                 <code class="inline">"score": {</code>
@@ -243,7 +243,6 @@
                                 <code class="inline">}</code>
                             </li>
                         </ul>
-                    </p>
                     <hr/>
                     <p>
                         <b>Example:</b>
@@ -260,10 +259,10 @@
                     </p>
                     <p>
                         <b>Syntax:</b>
+                    </p>
                         <ul>
                             <li>String containing the keybind key</li>
                         </ul>
-                    </p>
                     <p>
                         <details>
                             <summary>Complete list of all keybinds:</summary>
@@ -303,7 +302,6 @@
                             </div>
                             <span class="overflow"></span>
                         </details>
-                    </p>
                     <hr/>
                     <p>
                         <b>Example:</b>
@@ -320,6 +318,7 @@
                     </p>
                     <p>
                         <b>Syntax:</b>
+                    </p>
                         <ul>
                             <li><code class="inline">"nbt"</code></li>
                             <ul>
@@ -334,16 +333,15 @@
                                 <code class="inline">"interpret"</code> (optional) can be set to <b>true</b> or <b>false</b>. Specifies whether NBT should be turned into a formatted text.
                             </li>
                         </ul>
-                    </p>
                     <hr/>
                     <p>
                         <b>Examples:</b>
+                    </p>
                         <ul>
                             <li><code class="inline">{"nbt":"SelectedItem.Count", "entity":"@p", "interpret":true}</code> will display the amount of items the nearest player is currently holding</li>
                             <li><code class="inline">{"nbt":"Items", "block":"~ ~-1 ~", "interpret":true}</code> will display all items inside an entity block underneath</li>
                             <li><code class="inline">{"nbt":"Some.Random.Path[0]", "storage":"minecraft:my_storage"}</code> will display the contents of <code class="inline">Some.Random.Path[0]</code> of a storage named <code class="inline">minecraft:my_storage</code> in its pure way. (Kind of like <code class="inline">/data get storage</code> would display)</li>
                         </ul>
-                    </p>
                 </article>
             </main>
         </section>

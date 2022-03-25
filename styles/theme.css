@@ -118,28 +118,25 @@ article {
     outline: 1px solid var(--outline);
     width: min(100% - 2.5rem, 40rem);
     background-color: var(--section);
-    padding: 0.5rem;
+    padding: 0.75rem;
     margin: 1rem auto;
     border-radius: 0.5rem;
     overflow-x: auto;
 }
 
 article hr {
-    margin-left: -0.5rem;
-    width: calc(100% + 1rem);
+    margin-left: -0.75rem;
+    width: calc(100% + 1.5rem);
 }
 
 article h1 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
     font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: -1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
-article p {
+article p,
+article ul {
     line-height: 1.35rem;
     margin: 1rem 0;
 }
@@ -151,7 +148,12 @@ article p.properties {
     border-radius: 0.5rem;
 }
 
-article p:last-child {
+article *:first-child,
+article h1 + * {
+    margin-top: 0;
+}
+
+article *:last-child {
     margin-bottom: 0;
 }
 
@@ -166,7 +168,6 @@ article em.description {
     display: block;
     font-size: 0.8rem;
     line-height: 1rem;
-    margin-bottom: 0.5rem;
 }
 
 article h1 + em.description {
@@ -230,20 +231,12 @@ article code.title {
     font-weight: bold;
 }
 
-article > ul {
-    margin-top: -0.75rem;
-}
-
-article > ul > ul {
-    margin-top: 0.25rem;
-}
-
-article ul li {
-    line-height: 1.35rem;
-}
-
 article ul li:not(:first-child) {
     margin-top: 0.25rem;
+}
+
+article ul li:not(:last-child) {
+    margin-bottom: 0.25rem;
 }
 
 article a {

@@ -52,6 +52,10 @@ body > div {
     scroll-snap-type: x mandatory;
 }
 
+body > div.no_sidebar {
+    --page-width: 100%
+}
+
 body > div::-webkit-scrollbar {
     display: none;
 }
@@ -118,7 +122,7 @@ label.category_list {
 }
 
 .category_list.dimmed > hr ~ * {
-    opacity: 0.05;
+    opacity: 0.3;
 }
 
 .category_list:not(.dimmed) .button.category.revealed + label {
