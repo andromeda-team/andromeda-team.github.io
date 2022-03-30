@@ -52,6 +52,10 @@ body > div {
     scroll-snap-type: x mandatory;
 }
 
+body.fullscreen > div {
+    --panel-width: 0;
+}
+
 body > div::-webkit-scrollbar {
     display: none;
 }
