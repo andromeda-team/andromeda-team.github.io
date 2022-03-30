@@ -1,12 +1,15 @@
 [...document.getElementsByClassName('property')].forEach((property) => {
-    property.addEventListener('change', () => {
-        [...property.parentElement.parentElement.getElementsByClassName('insert')].forEach((insert) => {
-            if (insert.dataset.var == property.getAttribute('id')) {
-                insert.textContent = property.value;
-            }
-        });
-    });
+    property.addEventListener('change', insert_var(property, property.value));
+    insert_var(property, property.getAttribute('placeholder'));
 });
+
+function insert_var(property, value) {
+    [...property.parentElement.parentElement.getElementsByClassName('insert')].forEach((insert) => {
+        if (insert.dataset.var == property.getAttribute('id')) {
+            insert.textContent = value;
+        }
+    });
+}
 
 const search_docs = document.getElementById('search_docs');
 const category_lists = [...document.getElementsByClassName('category_list')];

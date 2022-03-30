@@ -138,7 +138,114 @@
             </header>
             <!-- END INCLUDING assets/site_components/tabs.html -->
             <main>
-                
+                <article id="description">
+                    <h1>Description</h1>
+                    <p>
+                        Storages are extremely powerful, though they create the same latencies as any other /data commands.
+                    </p>
+                    <p>
+                        Since storages can store <b>any</b> data in any paths and names you wish, they can be used to create a <b>"database"</b> for players/other.
+                    </p>
+                    <p>
+                        The reason you would prefer a "database" over using scoreboards for players is because you can't query score of an offline player, this isn't true for our databases!
+                    </p>
+                </article>
+                <article id="entity-database">
+                    <h1>Entity database</h1>
+                    <p>
+                        In this section we will cover creating and managing entity database, we will use players, though it will work for <b>any entities</b>!
+                    </p>
+                    <p class="properties">
+                        <b>Setting properties</b>
+                        <em class="description">
+                            (optional) You can set variables to your personal ones, to get the best experience out of explanation. You will also be able to simply copy & paste the code into the corresponding functions!
+                        </em>
+                        <input type="text" id="namespace" class="input property" placeholder="namespace">
+                        <label for="namespace"><em class="description"><b>Data pack namespace</b></em></label>
+                    </p>
+                    <p>
+                        First, we need to register player into the database. To do so we can create a function:
+                    </p>
+                    <ul class="code-block">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:player/register</span></li>
+                        <li><br></li>
+                        <li>tag @s add -<span class="insert" data-var="namespace"></span>.in_database</li>
+                        <li><br></li>
+                        <li><span class="comment"># <u>UUID</u> is used to link this entry to an entity. You can add <b>any</b> other properties you wish. I will simply add a <u>Score</u></span></li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Database append value {UUID:[I; 0, 0, 0, 0], Score:0}</li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Database[-1].UUID set from entity @s UUID</li>
+                    </ul>
+                    <p>
+                        This will create a blank entry, that has a score.
+                    </p>
+                </article>
+                <article id="api">
+                    <h1>API</h1>
+                    <p>
+                        Since we are working with a custom data pack, we will need to create an "API". Interface, that we will use to access it, since storages aren't directly connected to an entity.
+                    </p>
+                    <p>
+                        I recommend create a separate directory for this. For instance I will use <code class="inline">/data/namespace/functions/api/database/</code>.
+                    </p>
+                    <p>
+                        Inside we will have <code class="inline">/read/</code> and <code class="inline">/write/</code> directories, to make calls more readable.
+                    </p>
+                </article>
+                <article id="read-api">
+                    <h1>Read API</h1>
+                    <p>
+                        The simplest one will be reading from the database.
+                    </p>
+                    <p class="properties">
+                        <b>Setting properties</b>
+                        <em class="description">
+                            (optional) You can set variables to your personal ones, to get the best experience out of explanation. You will also be able to simply copy & paste the code into the corresponding functions!
+                        </em>
+                        <input type="text" id="namespace" class="input property" placeholder="namespace">
+                        <label for="namespace"><em class="description"><b>Data pack namespace</b></em></label>
+                    </p>
+                    <p>
+                        Create a function to prepare database for reading:
+                    </p>
+                    <ul class="code-block">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/open</span></li>
+                        <li><br></li>
+                        <li><span class="comment"># Create a copy of the database. We will use <a href="/docs/nbt_data/parsing.html#page">the parsing algorithm</a></span></li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Thread set from storage minecraft:<span class="insert" data-var="namespace"></span> Database</li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Instance set value {}</li>
+                    </ul>
+                    <p>
+                        Let's create a function to get entry by uuid:
+                        <em class="description">
+                            We can then run, for example: <code class="inline">data get storage minecraft:<span class="insert" data-var="namespace"></span> Instance.Score</code>. This will be the score of the player with this UUID
+                        </em>
+                    </p>
+                    <ul class="code-block">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid</span></li>
+                        <li><br></li>
+                        <li>function <span class="insert" data-var="namespace"></span>:api/database/open</li>
+                        <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Thread[] run function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</li>
+                        <li>execute unless data storage minecraft:<span class="insert" data-var="namespace"></span> Instance.UUID run ... <span class="comment">(failed)</span></li>
+                        <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Instance.UUID run ... <span class="comment">(succeed)</span></li>
+                    </ul>
+                    <p>
+                        Now the step:
+                    </p>
+                    <ul class="code-block">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</span></li>
+                        <li><br></li>
+                        <li>...</li>
+                    </ul>
+                    <p>
+
+                    </p>
+                </article>
+                <article id="write-api">
+                    <h1>Write API</h1>
+                    <p>
+                        ...
+                    </p>
+                </article>
             </main>
         </section>
     </div>

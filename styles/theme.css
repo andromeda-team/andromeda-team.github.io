@@ -181,7 +181,7 @@ article code.inline {
     font-family: var(--font-monospace);
     width: fit-content;
     white-space: normal;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 article .code-block {
@@ -301,10 +301,8 @@ article details[open] {
 }
 
 article span.insert {
-    background-color: var(--background-hover);
-    padding: 0.125rem 0.25rem;
-    margin: -0.125rem -0.25rem;
-    border-radius: 0.25rem;
+    color: var(--green);
+    text-decoration: underline;
     white-space: nowrap;
 }
 
