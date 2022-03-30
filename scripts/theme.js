@@ -1,4 +1,5 @@
-initial_navbar_state(document.getElementById('current_navbar').value);
+initial_state(document.getElementById('current_navbar'));
+initial_state(document.getElementById('current_tab'));
 
 [...document.getElementsByClassName('category')].forEach((category) => {
     category.addEventListener('click', () => {
@@ -19,12 +20,12 @@ function reveal_path(element) {
     }
 }
 
-function initial_navbar_state(state) {
-    if (!state) return;
+function initial_state(container) {
+    if (!container.value) return;
 
-    [...document.getElementsByClassName('button')].forEach((element) => {
+    [...container.parentElement.getElementsByClassName('button')].forEach((element) => {
         let href = element.getAttribute('href') || '';
-        if (href.includes(state)) {
+        if (href.includes(container.value)) {
             element.classList.add('selected');
             if (element.parentElement.classList.contains('category_list')) {
                 reveal_path(document.getElementById(element.parentElement.getAttribute('for')));
