@@ -203,6 +203,8 @@
                         </em>
                         <input type="text" id="namespace" class="input property" placeholder="namespace">
                         <label for="namespace"><em class="description"><b>Data pack namespace</b></em></label>
+                        <input type="text" id="scoreboard" class="input property" placeholder="scoreboard">
+                        <label for="scoreboard"><em class="description"><b>Scoreboard</b> that is used to store temporary data</em></label>
                     </p>
                     <p>
                         Create a function to prepare database for reading:
@@ -224,20 +226,33 @@
                         <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid</span></li>
                         <li><br></li>
                         <li>function <span class="insert" data-var="namespace"></span>:api/database/open</li>
-                        <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Thread[] run function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</li>
+                        <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Thread[] run function <a class="function" href="#api-database-read-get_entry_by_uuid-step"><span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</a></li>
                         <li>execute unless data storage minecraft:<span class="insert" data-var="namespace"></span> Instance.UUID run ... <span class="comment">(failed)</span></li>
                         <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Instance.UUID run ... <span class="comment">(succeed)</span></li>
                     </ul>
                     <p>
                         Now the step:
                     </p>
-                    <ul class="code-block">
+                    <ul class="code-block" id="api-database-read-get_entry_by_uuid-step">
                         <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</span></li>
                         <li><br></li>
-                        <li>...</li>
+                        <li><span class="comment"># We compare UUIDs and if they match we return the result, if they don't we run the function again for the next element</span></li>
+                        <li>execute store success score #Succeed <span class="insert" data-var="scoreboard"></span> run data modify storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1].UUID set from entity @s UUID</li>
+                        <li>execute if score #Succeed <span class="insert" data-var="scoreboard"></span> matches 0 run function <a class="function" href="#api-database-read-get_entry_by_uuid-return"><span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/return</a></li>
+                        <li>data remove storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1]</li>
+                        <li>execute if score #Succeed matches 1 if data storage minecraft:<span class="insert" data-var="namespace"></span> Thread[] run function <a class="function" href="#api-database-read-get_entry_by_uuid-step"><span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</a></li>
                     </ul>
                     <p>
-
+                        Return function if "succeed":
+                    </p>
+                    <ul class="code-block" id="api-database-read-get_entry_by_uuid-return">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/return</span></li>
+                        <li><br></li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Instance set from storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1]</li>
+                        <li>data remove storage minecraft:<span class="insert" data-var="namespace"></span> Thread</li>
+                    </ul>
+                    <p>
+                        
                     </p>
                 </article>
                 <article id="write-api">

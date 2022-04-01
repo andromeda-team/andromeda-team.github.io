@@ -15,6 +15,7 @@
     --section-hover: #4A4A4A;
     --input: #454545;
 
+    --yellow: #f0c94a;
     --green: #4af058;
     --blue: #3584E4;
     --dark-blue: #2047b3;
@@ -134,6 +135,7 @@ main {
     height: calc(100% - 3rem);
     overflow-y: auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 hr {

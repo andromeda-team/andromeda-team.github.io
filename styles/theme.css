@@ -224,6 +224,14 @@ article .code-block li::before {
     text-align: center;
 }
 
+article .code-block:target {
+    outline: 2px solid var(--yellow);
+}
+
+article .code-block:target > li:first-child span {
+    color: var(--accent);
+}
+
 article code.title {
     background-color: var(--text);
     color: var(--background);
@@ -248,6 +256,10 @@ article ul li:not(:first-child) {
 
 article a {
     color: var(--blue);
+}
+
+article a.function {
+    color: var(--yellow);
 }
 
 article details {
