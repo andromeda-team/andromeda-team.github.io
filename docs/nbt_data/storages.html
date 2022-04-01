@@ -194,7 +194,8 @@
                 <article id="read-api">
                     <h1>Read API</h1>
                     <p>
-                        The simplest one will be reading from the database.
+                        The simplest one will be reading from the database <br>
+                        All we need to do is parse through the database and return the one that has the same UUID as the player
                     </p>
                     <p class="properties">
                         <b>Setting properties</b>
@@ -209,7 +210,7 @@
                     <p>
                         Create a function to prepare database for reading:
                     </p>
-                    <ul class="code-block">
+                    <ul class="code-block" id="api-database-open">
                         <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/open</span></li>
                         <li><br></li>
                         <li><span class="comment"># Create a copy of the database. We will use <a href="/docs/nbt_data/parsing.html#page">the parsing algorithm</a></span></li>
@@ -225,7 +226,7 @@
                     <ul class="code-block">
                         <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid</span></li>
                         <li><br></li>
-                        <li>function <span class="insert" data-var="namespace"></span>:api/database/open</li>
+                        <li>function <a href="#api-database-open" class="function"><span class="insert" data-var="namespace"></span>:api/database/open</a></li>
                         <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Thread[] run function <a class="function" href="#api-database-read-get_entry_by_uuid-step"><span class="insert" data-var="namespace"></span>:api/database/read/get_entry_by_uuid/step</a></li>
                         <li>execute unless data storage minecraft:<span class="insert" data-var="namespace"></span> Instance.UUID run ... <span class="comment">(failed)</span></li>
                         <li>execute if data storage minecraft:<span class="insert" data-var="namespace"></span> Instance.UUID run ... <span class="comment">(succeed)</span></li>
@@ -258,7 +259,62 @@
                 <article id="write-api">
                     <h1>Write API</h1>
                     <p>
-                        ...
+                        Writing is more complicated, because even though we can remove/insert certain elements from/to an array, we can only do so for static values like "4", when we want it to work for elements that have the same ID. <b>Thus, we are going to use parsing</b>
+                    </p>
+                    <p class="properties">
+                        <b>Setting properties</b>
+                        <em class="description">
+                            (optional) You can set variables to your personal ones, to get the best experience out of explanation. You will also be able to simply copy & paste the code into the corresponding functions!
+                        </em>
+                        <input type="text" id="namespace" class="input property" placeholder="namespace">
+                        <label for="namespace"><em class="description"><b>Data pack namespace</b></em></label>
+                        <input type="text" id="scoreboard" class="input property" placeholder="scoreboard">
+                        <label for="scoreboard"><em class="description"><b>Scoreboard</b> that is used to store temporary data</em></label>
+                    </p>
+                    <p>
+                        As an example, we want to set score to a player using UUID. We will store our score inside <code class="inline">#Setter <span class="insert" data-var="scoreboard"></span></code>
+                    </p>
+                    <ul class="code-block">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/write/set_score_by_uuid</span></li>
+                        <li><br></li>
+                        <li><span class="comment"># We prepare the database for parsing and then erasing the current database</span></li>
+                        <li>scoreboard players set #Setter <span class="insert" data-var="scoreboard"></span> 1337</li>
+                        <li>function <a href="#api-database-open" class="function"><span class="insert" data-var="namespace"></span>:api/database/open</a></li>
+                        <li>execute store result score #Counter <span class="insert" data-var="scoreboard"></span> run data get storage minecraft:<span class="insert" data-var="namespace"></span> Thread</li>
+                        <li>data remove storage minecraft:<span class="insert" data-var="namespace"></span> Database</li>
+                        <li>execute if score #Counter <span class="insert" data-var="scoreboard"></span> matches 1.. run function <a href="#api-database-write-set_score_by_uuid-step"><span class="insert" data-var="namespace"></span>:api/database/write/set_score_by_uuid/step</a></li>
+                    </ul>
+                    <p>
+                        The step:
+                    </p>
+                    <ul class="code-block" id="api-database-write-set_score_by_uuid-step">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/write/set_score_by_uuid/step</span></li>
+                        <li><br></li>
+                        <li>scoreboard players remove #Counter <span class="insert" data-var="scoreboard"></span> 1</li>
+                        <li><br></li>
+                        <li><span class="comment"># We must copy it each time, because in case with writing, we do not want to modify storage that doesn't have the same ID as we're searching for!</span></li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Instance set from storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1].UUID</li>
+                        <li><br></li>
+                        <li>execute store success score #Succeed <span class="insert" data-var="scoreboard"></span> run data modify storage minecraft:<span class="insert" data-var="namespace"></span> Instance set from entity @s UUID</li>
+                        <li>execute if score #Succeed <span class="insert" data-var="scoreboard"></span> matches 0 run function <a class="function" href="#api-database-write-set_score_by_uuid-set"><span class="insert" data-var="namespace"></span>:api/database/write/set_score_by_uuid/set</a></li>
+                        <li><br></li>
+                        <li><span class="comment"># After (not) modifying we just append the value back to the database and repeat the cycle until we're done</span></li>
+                        <li>data modify storage minecraft:<span class="insert" data-var="namespace"></span> Database append from storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1]</li>
+                        <li>data remove storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1]</li>
+                        <li><br></li>
+                        <li>execute if score #Counter <span class="insert" data-var="scoreboard"></span> matches 1.. run function <a href="#api-database-write-set_score_by_uuid-step"><span class="insert" data-var="namespace"></span>:api/database/write/set_score_by_uuid/step</a></li>
+                    </ul>
+                    <p>
+                        We set the Score:
+                    </p>
+                    <ul class="code-block" id="api-database-write-set_score_by_uuid-set">
+                        <li><span class="comment">#! Function <span class="insert" data-var="namespace"></span>:api/database/write/set_score_by_uuid/set</span></li>
+                        <li><br></li>
+                        <li><span class="comment"># In our case we could just put the following line without creating a function, but in practice, when you want to modify more than one value having a function is better.</span></li>
+                        <li>execute store result storage minecraft:<span class="insert" data-var="namespace"></span> Thread[-1].Score int 1 run scoreboard players get #Setter <span class="insert" data-var="scoreboard"></span></li>
+                    </ul>
+                    <p>
+                        This will set the score of a player who executes the main function to <code class="inline">1337</code>. Cool, isn't it?
                     </p>
                 </article>
             </main>

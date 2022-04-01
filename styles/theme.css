@@ -199,6 +199,11 @@ article .code-block {
     width: calc(100% - 2rem);
 }
 
+article .code-block > li:first-child > span {
+    font-weight: bold;
+    color: var(--text);
+}
+
 article .code-block li {
     position: relative;
     padding-left: 0.5rem;
@@ -226,10 +231,6 @@ article .code-block li::before {
 
 article .code-block:target {
     outline: 2px solid var(--yellow);
-}
-
-article .code-block:target > li:first-child span {
-    color: var(--accent);
 }
 
 article code.title {

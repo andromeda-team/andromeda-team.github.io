@@ -1,9 +1,10 @@
 [...document.getElementsByClassName('property')].forEach((property) => {
-    property.addEventListener('change', insert_var(property, property.value));
-    insert_var(property, property.getAttribute('placeholder'));
+    property.addEventListener('input', () => {insert_var(property, false)});
+    insert_var(property, true);
 });
 
-function insert_var(property, value) {
+function insert_var(property, is_placeholder) {
+    let value = (is_placeholder) ? property.getAttribute('placeholder') : property.value;
     [...property.parentElement.parentElement.getElementsByClassName('insert')].forEach((insert) => {
         if (insert.dataset.var == property.getAttribute('id')) {
             insert.textContent = value;
