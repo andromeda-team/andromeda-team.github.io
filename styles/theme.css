@@ -313,6 +313,18 @@ article details[open] {
     height: 8rem;
 }
 
+article span.format-command {
+    color: var(--red);
+}
+
+article span.format-arg {
+    color: var(--yellow);
+}
+
+article span.format-selector {
+    color: var(--yellow);
+}
+
 article span.insert {
     color: var(--green);
     text-decoration: underline;
