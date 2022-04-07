@@ -1,9 +1,10 @@
 # ONLY WORKS IN PYTHON 3.9 AND NEWER
 
+import os
 from pathlib import Path
 import itertools
 
-HTML_PARSE_BLACKLIST = ()
+HTML_PARSE_BLACKLIST = ('OLD')
 html_files = []
 
 

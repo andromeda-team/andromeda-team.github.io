@@ -1,29 +1,29 @@
 :root {
     font-size: 16px;
-    --font: Ubuntu, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    --font-monospace: Ubuntu Mono, 'Source Code Pro', 'Courier Prime', monospace;
-    --speed: 100ms;
+    --speed: 150ms;
 
+    --header: #2F2F2F;
+    --header-light: #444444;
+    --outline: #505050;
     --background: #242424;
-    --background-dimmed: #1E1E1E;
-    --background-hover: #333333;
-    --outline: #4F4F4F;
-    --focus: #526C8A;
-    --header: #303030;
-    --header-hover: #3E3E3E;
-    --section: #363636;
-    --section-hover: #4A4A4A;
-    --input: #454545;
+    --background-dark: #1E1E1E;
+    --background-light: #363636;
+    --hint: #919191;
+    --text: #F3F3F3;
 
-    --red: #f04a4a;
-    --yellow: #f0c94a;
-    --green: #4af058;
+    --green: #35e443;
     --blue: #3584E4;
-    --dark-blue: #2047b3;
+    --yellow: #ffbe32;
+    --red: #ff5252;
     --accent: var(--blue);
+}
 
-    --text: #FFFFFF;
-    --text-description: #767676;
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+*:focus {
+    outline: 2px solid var(--accent);
 }
 
 html {
@@ -31,119 +31,9 @@ html {
 }
 
 body {
-    background-color: var(--background);
     position: absolute;
     margin: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    font-family: var(--font);
-    color: var(--text);
-}
-
-body > div {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    --panel-width: 18rem;
-    --page-width: calc(100% - var(--panel-width));
-    overflow-y: hidden;
-    overflow-x: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    scroll-snap-type: x mandatory;
-}
-
-body.fullscreen > div {
-    --panel-width: 0;
-}
-
-body > div::-webkit-scrollbar {
-    display: none;
-}
-
-header {
-    background-color: var(--header);
-    height: 3rem;
-    min-height: 3rem;
-    border-bottom: 1px solid var(--outline);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    overflow: hidden;
-    font-weight: bold;
-}
-
-@media only screen and (max-width: 40rem) {
-    body > div {
-        --panel-width: 100vw;
-        --page-width: 100vw;
-    }
-}
-
-#panel {
-    width: var(--panel-width);
-    min-width: var(--panel-width);
-    scroll-snap-align: start;
-    border-right: 1px solid var(--outline);
-}
-
-#page {
-    width: var(--page-width);
-    min-width: var(--page-width);
-    scroll-snap-align: start;
-}
-
-@media only screen and (max-width: 12rem) { #panel header span { display: none; } }
-
-@media only screen and (max-width: 50rem) { #page header span { display: none; } }
-
-.category_list,
-nav {
-    background-color: var(--background);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-    height: calc(100% - 4rem);
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-label.category_list {
-    transition: left 400ms;
-    left: var(--panel-width);
-    position: absolute;
-    width: var(--panel-width);
-    height: calc(100% - 1rem);
-    padding: 0.5rem 0;
-    margin: -0.5rem 0;
-}
-
-.category_list.dimmed > hr ~ * {
-    opacity: 0.05;
-}
-
-.category_list:not(.dimmed) .button.category.revealed + label {
-    left: 0;
-}
-
-main {
-    height: calc(100% - 3rem);
-    overflow-y: auto;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-hr {
-    border: none;
-    outline: none;
-    width: 100%;
-    height: 1px;
-    background-color: var(--outline);
-    margin: 0;
 }

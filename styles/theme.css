@@ -1,344 +1,553 @@
+body {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    color: var(--text);
+}
+
 .icon {
-    min-height: 1rem;
-    min-width: 1rem;
+    min-width: 1em;
+    min-height: 1em;
+}
+
+nav,
+main {
+    transition: transform 400ms, width 400ms;
+    width: 100%;
+}
+
+nav {
+    position: relative;
+    background-color: var(--header);
+    border-bottom: 1px solid var(--outline);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    height: 3rem;
+    min-height: 3rem;
+    padding: 0 0.5rem;
+    z-index: 1;
+}
+
+nav > div {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 50rem) { nav h1 { display: none } }
+@media only screen and (max-width: 25rem) { nav > div span { display: none } }
+
+.tab,
+.tab-button {
+    transition: background-color var(--speed);
+    background-color: var(--header);
+    padding: 0.5rem;
+    border-radius: 0.33rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}
+
+.tab:hover,
+.tab-button:hover,
+.tab.focus {
+    background-color: var(--header-light);
+    outline: 1px solid var(--outline);
+}
+
+.tab-button {
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+}
+
+aside {
+    transition: left 400ms;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--header);
+    border-right: 1px solid var(--outline);
+    height: 100vh;
+    width: min(100vw, 18rem - 1px);
+    left: -18rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+aside > header {
+    height: 3rem;
+    border-bottom: 1px solid var(--outline);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
+
+aside.triggered {
+    left: 0;
+}
+
+aside h1 {
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+nav.triggered,
+aside.triggered + main {
+    transform: translateX(18rem);
+    width: calc(100% - 18rem);
+}
+
+nav .sidebar_trigger {
+    transition: margin-left 400ms;
+}
+
+nav.triggered .sidebar_trigger {
+    margin-left: -3rem;
+}
+
+main {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+    height: calc(100% - 4rem);
+    width: 100%;
+    overflow-y: auto;
+}
+
+article,
+.algorithm {
+    position: relative;
+    display: block;
+    background-color: var(--background-light);
+    outline: 1px solid var(--outline);
+    width: min(100% - 3rem, 40rem);
+    height: fit-content;
+    padding: 0.5rem;
+    border-radius: 0.33rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article hr {
+    border: none;
+    outline: none;
+    width: calc(100% + 1rem);
+    margin-left: -0.5rem;
+    height: 1px;
+    background-color: var(--outline);
+}
+
+article:target {
+    animation-name: targeted;
+    animation-duration: 1s;
+}
+
+article:target::before {
+    content: 'Jumped to this section by a link';
+    display: block;
+    font-size: 0.75rem;
+    color: var(--hint);
+    margin-bottom: 0.25rem;
+}
+
+@keyframes targeted {
+    from {
+        background-color: var(--header-light);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        outline: 1px solid var(--accent);
+    }
+    to {
+        background-color: var(--background-light);
+        box-shadow: 0 0 0rem rgba(0, 0, 0, 0);
+    }
+}
+
+article h1 {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: min((100vw + 0rem) * 0.08, 1.5rem);
+    overflow-wrap: break-word;
+    white-space: normal;
+    hyphens: auto;
+}
+
+article h1 a {
+    transition: color var(--speed);
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text);
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5rem   ;
+}
+
+article h1 a:hover {
+    color: var(--accent);
+}
+
+.input {
+    border: none;
+    outline: 1px solid var(--outline);
+    background-color: var(--background);
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.33rem;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.input.labeled {
+    padding-left: 2rem;
+}
+
+.input.labeled + label {
+    margin-top: -2.1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--outline);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: text;
+}
+
+.input.labeled + label button {
+    display: none;
+    background-color: transparent;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    color: var(--text);
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.input.labeled + label button.focus {
+    display: flex;
+}
+
+.input.labeled + label button:focus {
+    outline: none;
+    color: var(--accent);
 }
 
 .button {
     transition: background-color var(--speed);
     background-color: transparent;
     padding: 0.5rem;
-    border-radius: 0.3rem;
-    color: var(--text);
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 0.33rem;
     border: none;
-    outline: none;
-    white-space: nowrap;
-    font-size: 1rem;
-    font-family: var(--font);
     font-weight: bold;
-}
-
-span.button,
-a.button {
-    height: 1.25rem;
-}
-
-button.button {
-    height: 2.25rem;
-}
-
-input.input {
-    height: 1.25rem;
-}
-
-.button > span { margin-top: 1px; } /* Work around */
-
-.button > .icon_secondary {
-    margin-left: auto;
-    margin-right: 0;
-}
-
-.button:focus,
-.input:focus {
-    outline: 2px solid var(--focus);
-}
-
-.button.nav,
-.input.nav {
-    width: calc(100% - 2rem);
-    margin: 0 0.5rem;
-}
-
-button.button.nav {
-    width: calc(100% - 1rem);
-}
-
-.button.nav:hover {
-    background-color: var(--background-hover);
-}
-
-.button.nav.selected {
-    background-color: var(--header-hover);
-}
-
-.button.tab:hover {
-    background-color: var(--section);
-}
-
-.button.tab.selected {
-    background-color: var(--header-hover);
-}
-
-
-.input {
-    transition: background-color var(--speed);
-    background-color: var(--input);  
-    padding: 0.5rem;
-    border-radius: 0.3rem;
     color: var(--text);
     text-decoration: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+    font-size: 1rem;
+}
+
+button.button > .icon:last-child {
+    margin-left: auto;
+}
+
+.button:hover,
+.button.focus {
+    background-color: var(--header-light);
+    outline: 1px solid var(--outline);
+}
+
+.button.focus { pointer-events: none; }
+
+button.button + label {
+    transition: left 400ms;
+    position: absolute;
+    background-color: var(--header);
+    top: calc(3.5rem + 1px);
+    left: 18rem;
+    width: 18rem;
+    height: calc(100% - 3.5rem - 1px);
+    margin: -0.5rem 0;
+    padding-bottom: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+button.button + label > hr {
     border: none;
     outline: none;
-    white-space: nowrap;
-    font-size: 1rem;
-    font-family: var(--font);
-    width: fit-content;
+    background-color: var(--outline);
+    height: 1px;
+    width: 100%;
+    max-height: 1px;
 }
 
-
-.input.with_icon {
-    position: relative;
-    padding-left: 2rem;
+label.unfolded > a,
+label.unfolded > button,
+aside.unfolded > a,
+aside.unfolded > button {
+    transition: transform 400ms;
+    transform: translate(-18rem);
 }
 
-.input.with_icon + label {
-    position: absolute;
-    margin: 0.6rem;
-    left: 0.5rem;
-}
-
-.input.nav.with_icon {
-    width: calc(100% - 3.5rem);
-}
-
-.input.property {
-    background-color: var(--section);
-}
-
-
-article {
-    outline: 1px solid var(--outline);
-    width: min(100% - 2.5rem, 40rem);
-    background-color: var(--section);
-    padding: 0.5rem;
-    margin: 1rem auto;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-}
-
-article hr {
-    margin-left: -0.5rem;
-    width: calc(100% + 1rem);
-}
-
-article h1 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: -1rem;
+button.button.unfolded + label {
+    left: 0;
 }
 
 article p {
-    line-height: 1.35rem;
-    margin: 1rem 0;
-}
-
-article p.properties {
-    background-color: var(--background);
-    outline: 1px solid var(--outline);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+    margin-top: 0;
+    line-height: 1.25rem;
 }
 
 article p:last-child {
     margin-bottom: 0;
 }
 
-article em.extra {
-    font-style: normal;
-    color: var(--text-description)
-}
-
-article em.description {
-    font-style: normal;
-    color: var(--text-description);
-    display: block;
-    font-size: 0.8rem;
-    line-height: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-article h1 + em.description {
-    margin-top: 1rem;
-}
-
-article code.inline {
-    border-radius: 0.25rem;
-    padding: 0.125rem 0.25rem;
-    display: inline-block;
-    background-color: var(--background);
-    font-family: var(--font-monospace);
-    width: fit-content;
-    white-space: normal;
-    font-size: 1em;
-}
-
-article .code-block {
-    display: block;
-    background-color: var(--background);
-    border-radius: 0.5rem;
-    font-family: var(--font-monospace);
-    font-size: 1rem;
-    white-space: normal;
-    padding: 0.5rem 0;
-    margin: -0.5rem 0;
-    border-left: 2rem solid transparent;
-    list-style: none;
-    counter-reset: mycounter;
-    width: calc(100% - 2rem);
-}
-
-article .code-block > li:first-child > span {
-    font-weight: bold;
-    color: var(--text);
-}
-
-article .code-block li {
-    position: relative;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    line-height: 1.5rem;
-    display: block;
-}
-
-article .code-block li:nth-child(even) {
-    background-color: var(--background-dimmed);
-}
-
-article .code-block li::before {
-    content: counter(mycounter); 
-    counter-increment: mycounter;
-    position: absolute;
-    top: 0;
-    left: -2rem;
-    width: 2rem;
-    height: 1.5rem;
-    line-height: 1.5rem;
-    color: var(--text-description);
-    text-align: center;
-}
-
-article .code-block:target {
-    outline: 2px solid var(--yellow);
-}
-
-article code.title {
-    background-color: var(--text);
-    color: var(--background);
-    font-weight: bold;
-}
-
-article > ul {
-    margin-top: -0.75rem;
-}
-
-article > ul > ul {
-    margin-top: 0.25rem;
-}
-
-article ul li {
-    line-height: 1.35rem;
-}
-
-article ul li:not(:first-child) {
-    margin-top: 0.25rem;
-}
-
 article a {
     color: var(--blue);
 }
 
-article a.function {
-    color: var(--yellow);
+em.extra {
+    color: var(--hint);
 }
 
-article details {
-    transition: height 400ms;
-    position: relative;
-    background-color: var(--section-hover);
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    width: calc(100% - 1rem);
-    height: 1.25rem;
+code {
     display: inline-block;
-    overflow-y: hidden;
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: var(--background);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.33rem;
 }
 
-article details .overflow {
-    position: absolute;
+.graph,
+em.title {
     display: block;
-    background: var(--section-hover);
-    background: -moz-linear-gradient(0deg, var(--section-hover) 0%, rgba(0,0,0,0) 100%);
-    background: -webkit-linear-gradient(0deg, var(--section-hover) 0%, rgba(0,0,0,0) 100%);
-    background: linear-gradient(0deg, var(--section-hover) 0%, rgba(0,0,0,0) 100%);
-    width: calc(100% - 1.5rem);
-    height: 2rem;
-    bottom: 0;
-}
-
-article details code.inline {
-    background-color: var(--section);
-}
-
-article details summary {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0.5rem;
+    width: fit-content;
 }
 
-article details div {
-    overflow-y: auto;
-    height: 5.6rem;
+article ul {
+    padding-left: 1rem;
+    margin-top: -0.5rem;
+    line-height: 1.25rem;
+}
+
+article ul li {
+    margin-top: 0.5rem;
+}
+
+main > header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 2rem;
+    min-height: 2rem;
     width: 100%;
-    padding: 0.5rem;
-    margin: 0 -0.5rem;
+    margin-top: -1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-bottom: 1px solid var(--outline);
 }
 
-article details div::after {
-    content: '';
-    display: block;
-    margin-top: 1rem;
+main > header button {
+    position: relative;
+    background-color: var(--background);
+    outline: 1px solid var(--outline);
+    width: 100%;
+    border: none;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
 }
 
-article details[open] {
-    height: 8rem;
+main > header button:focus,
+main > header button.focus {
+    background-color: var(--header-light);
+    outline: 1px solid var(--outline);
 }
 
-article span.format-command {
-    color: var(--red);
+main > header button .icon {
+    transition: transform var(--speed), color var(--speed);
+    position: absolute;
+    right: 1rem;
+    transform: rotate(90deg);
 }
 
-article span.format-arg {
-    color: var(--yellow);
+main header button.focus .icon {
+    transform: rotate(270deg);
+    color: var(--hint);
 }
 
-article span.format-selector {
-    color: var(--yellow);
+.algorithm {
+    background-color: var(--background);
+    padding: 0;
+    width: min(100% - 2rem, 41rem);
+    height: 20rem;
+    min-height: 20rem;
+    display: grid;
+	grid-template-columns: 10rem 1fr;
+	grid-template-rows: 2rem 18rem;
+    gap: 1px;
+    overflow: hidden;
 }
 
-article span.insert {
-    color: var(--green);
-    text-decoration: underline;
+.algorithm * {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.algorithm > header {
+    position: relative;
+    background-color: var(--header);
+    border-bottom: 1px solid var(--outline);
+    grid-area: 1 / 1 / 2 / 3;
+    padding: 0.5rem 0.5rem;
+    height: calc(2rem - 1rem);
+    font-family: 'Ubuntu Mono', monospace;
+    overflow-x: auto;
     white-space: nowrap;
 }
 
-article span.insert.no-format {
-    background-color: transparent;
+.algorithm > div {
+    background-color: var(--header);
+    grid-area: 2 / 1 / 3 / 2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-right: 1px solid var(--outline);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-article span.comment {
-    color: var(--text-description);
+.algorithm > div button.button {
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
 }
 
-del * {
-    text-decoration: line-through;
+.algorithm > div button.button:last-child {
+    margin-top: auto;
+    margin-bottom: 0.5rem;
+}
+
+.algorithm > div button.button > .icon:last-child {
+    margin-left: 0;
+}
+
+.algorithm > section {
+    background-color: var(--background);
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.algorithm > section > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: auto;
+}
+
+.algorithm > section > div > span {
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.algorithm > section > div > span:nth-child(2n) {
+    background-color: var(--background-dark);
+}
+
+.algorithm > section > div > span a {
+    color: var(--green);
+}
+
+.algorithm > section > div > input {
+    background-color: var(--header);
+}
+
+.algorithm > section > div > em {
+    font-style: normal;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--hint);
+    margin-top: 0rem;
+    padding: 0 1rem;
+}
+
+@media only screen and (max-width: 25rem) {
+    .algorithm {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .algorithm > header {
+        min-height: 1.5rem;
+    }
+
+    .algorithm > div {
+        min-height: 3rem;
+        height: 3rem;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .algorithm > div > button {
+        height: 2rem;
+    }
+
+    .algorithm > section {
+        height: calc(100% - 6rem);
+    }
+}
+
+.format-comment {
+    color: var(--hint);
+}
+
+.format-command {
+    color: var(--red);
+}
+
+.format-selector {
+    color: var(--yellow);
 }
