@@ -305,7 +305,7 @@
             <section>
                 <div>
                     <span>execute store result score #Counter <u data-get="scoreboard"></u> run data get <u data-get="path"></u></span>
-                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>step</a></span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>parse_step</a></span>
                 </div>
                 <div style="display: none;">
                     <span>scoreboard players remove #Counter <u data-get="scoreboard"></u> 1</span>
@@ -316,7 +316,7 @@
                     <span>data modify <u data-get="path"></u> append from <u data-get="path"></u>[0]</span>
                     <span>data remove <u data-get="path"></u>[0]</span>
                     <span><br></span>
-                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>step</a></span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>parse_step</a></span>
                 </div>
                 <div style="display: none;">
                     <input type="text" class="input" data-set="workspace">
