@@ -519,7 +519,7 @@ main header button.focus .icon {
     
     nav.triggered,
     aside.triggered + main {
-        filter: blur(5px);
+        filter: brightness(0.2);
         pointer-events: none;
         width: 100vw;
     }
