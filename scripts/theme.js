@@ -168,15 +168,23 @@ if (main_tabs[0]) {
                 else child.style.removeProperty('display');
             }
         });
+
+        [...main_tabs[0].children].forEach(tab => {
+            if (tab.dataset.set == String(tab_id)) tab.classList.add('focus');
+            else tab.classList.remove('focus');
+        });
     }
 
-    open_tab(0);
+    let anchor = document.URL.split('#');
+    if (anchor[anchor.length - 1].includes('method-')) {
+        open_tab(Number(anchor[anchor.length - 1].slice(-1)) - 1);
+    } else {
+        open_tab(0);
+    }
 
     [...main_tabs[0].children].forEach(tab => {
         tab.addEventListener('click', (_) => {
             open_tab(tab.dataset.set);
-            [...main_tabs[0].children].forEach(t => { t.classList.remove('focus') });
-            tab.classList.add('focus');
         });
     });
 }
