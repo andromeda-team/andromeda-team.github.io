@@ -266,10 +266,13 @@
                 Method 2
             </h1>
             <p>
-                I'm going to do this later, basically uses the same storage by moving elements from the beginning to the end, ez pz
+                Is way simpler and way more versatile, <b>it lets you not only read, but even modify the array!</b>
+            </p>
+            <p>
+                It uses only 1 Array, we get the first element, we can read/modify it, then we move this element to the end of the array and repeat this project until we go through all elements. <b>It is important to create a counter, because otherwise this loop will be infinite</b>.
             </p>
         </article>
-        <section class="algorithm" data-tab="0" data-workspace="namespace:path/to/function/" data-scoreboard="scoreboard" data-path="entity @s Inventory" data-temp="storage minecraft:temp Instance">
+        <section class="algorithm" data-tab="1" data-workspace="namespace:path/to/function/" data-scoreboard="scoreboard" data-path="storage test Array">
             <header>
                 File <u data-get="workspace"></u>parse.mcfunction
             </header>
@@ -301,25 +304,19 @@
             </div>
             <section>
                 <div>
-                    <span># 1. We need to create a temporary data holder, which we can modify without losing any data:</span>
-                    <span>data modify <u data-get="temp"></u>.Parsing set from <u data-get="path"></u></span>
-                    <span><br></span>
-                    <span># 2. We create a counter, that will start with the size of the array and decrease in a loop, as well as a result placeholder:</span>
                     <span>execute store result score #Counter <u data-get="scoreboard"></u> run data get <u data-get="path"></u></span>
-                    <span>data remove <u data-get="temp"></u>.Match</span>
-                    <span><br></span>
-                    <span># 3. Then if the array isn't empty we start a loop:</span>
-                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>parse_step</a></span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>step</a></span>
                 </div>
                 <div style="display: none;">
                     <span>scoreboard players remove #Counter <u data-get="scoreboard"></u> 1</span>
                     <span><br></span>
-                    <span># 4. We remove the last element of the array</span>
-                    <span>data remove <u data-get="temp"></u>.Parsing[-1]</span>
+                    <span># At this line we can do with the element whatever we want, print it, check it, modify and more by using:</span>
+                    <span># data get <u data-get="path"></u>[0]</span>
                     <span><br></span>
-                    <span># Repeat the function or return the field depending on the counter:</span>
-                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches ..0 run data modify <u data-get="temp"></u>.Match set from <u data-get="temp"></u>.Parsing[-1]</span>
-                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>parse_step</a></span>
+                    <span>data modify <u data-get="path"></u> append from <u data-get="path"></u>[0]</span>
+                    <span>data remove <u data-get="path"></u>[0]</span>
+                    <span><br></span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>step</a></span>
                 </div>
                 <div style="display: none;">
                     <input type="text" class="input" data-set="workspace">
