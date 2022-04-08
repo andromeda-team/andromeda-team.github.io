@@ -18,7 +18,7 @@ main {
 }
 
 nav {
-    position: relative;
+    position: fixed;
     background-color: var(--header);
     border-bottom: 1px solid var(--outline);
     display: flex;
@@ -28,6 +28,7 @@ nav {
     height: 3rem;
     min-height: 3rem;
     padding: 0 0.5rem;
+    top: 0;
     z-index: 1;
 }
 
@@ -128,6 +129,7 @@ main {
     height: calc(100% - 4rem);
     width: 100%;
     overflow-y: auto;
+    margin-top: 3rem;
 }
 
 article,
