@@ -14,7 +14,7 @@ if (sidebar_trigger && sidebar && navbar && main) {
         navbar.classList.add('triggered');
     }
 
-    let screen_condition = (window.innerWidth > 61 * 16);
+    let screen_condition = (window.innerWidth > 40 * 16);
     function update() {
         if (screen_condition) { show(); }
         else hide();
@@ -30,11 +30,38 @@ if (sidebar_trigger && sidebar && navbar && main) {
         });
     });
 
-    main.addEventListener('click', (_) => { if (!screen_condition) hide() });
+    function getPosition(el) {
+        var xPosition = 0;
+        var yPosition = 0;
+
+        while (el) {
+            if (el.tagName == "BODY") {
+                // deal with browser quirks with body/window/document and page scroll
+                var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
+                var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
+
+                xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
+                yPosition += (el.offsetTop - yScrollPos + el.clientTop);
+            } else {
+                xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+                yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
+            }
+
+            el = el.offsetParent;
+        }
+        return {
+            x: xPosition,
+            y: yPosition
+        };
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!screen_condition && event.clientX > 18 * 16) hide();
+    });
 
     update();
     window.addEventListener('resize', (_) => {
-        screen_condition = (window.innerWidth > 61 * 16);
+        screen_condition = (window.innerWidth > 40 * 16);
         update();
     });
 }
@@ -56,7 +83,7 @@ if (set_aside && sidebar) {
             element.parentElement.previousSibling.previousSibling.classList.add('unfolded');
             element.parentElement.previousSibling.previousSibling.parentElement.classList.add('unfolded');
         } catch (e) {
-            
+
         }
     }
 
@@ -105,7 +132,7 @@ if (sidebar_searchbar) {
                     link.style.removeProperty('display');
                 }
             });
-            
+
         } else return_links();
 
         button.addEventListener('click', (_) => {
@@ -133,7 +160,7 @@ if (directories) {
 }
 
 const main_tabs = main.getElementsByTagName('header');
-if (main_tabs[0]) {   
+if (main_tabs[0]) {
     function open_tab(tab_id) {
         [...main.children].forEach(child => {
             if (child.dataset.tab) {
@@ -148,7 +175,7 @@ if (main_tabs[0]) {
     [...main_tabs[0].children].forEach(tab => {
         tab.addEventListener('click', (_) => {
             open_tab(tab.dataset.set);
-            [...main_tabs[0].children].forEach(t => {t.classList.remove('focus')});
+            [...main_tabs[0].children].forEach(t => { t.classList.remove('focus') });
             tab.classList.add('focus');
         });
     });
@@ -206,7 +233,7 @@ if (algorithms) {
                 return '<span class="format-' + name + '">' + string + '</span>';
             }
 
-            function format_by_array(input, array, formatting)  {
+            function format_by_array(input, array, formatting) {
                 let output = input;
                 array.forEach(word => {
                     output = output.replace(word + ' ', apply_formatting(word + ' ', formatting));

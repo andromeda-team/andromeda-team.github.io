@@ -115,12 +115,8 @@ aside.triggered + main {
     width: calc(100% - 18rem);
 }
 
-nav .sidebar_trigger {
-    transition: margin-left 400ms;
-}
-
 nav.triggered .sidebar_trigger {
-    margin-left: -3rem;
+    display: none;
 }
 
 main {
@@ -511,6 +507,20 @@ main header button.focus .icon {
     color: var(--hint);
     margin-top: 0rem;
     padding: 0 1rem;
+}
+
+@media only screen and (max-width: 40rem) {
+    nav,
+    aside + main {
+        transition: filter 400ms, transform 400ms;
+    }
+    
+    nav.triggered,
+    aside.triggered + main {
+        filter: blur(5px);
+        pointer-events: none;
+        width: 100vw;
+    }
 }
 
 @media only screen and (max-width: 25rem) {
