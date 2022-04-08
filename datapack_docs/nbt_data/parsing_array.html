@@ -4,7 +4,7 @@
     <!-- INCLUDE assets/site_components/head.html -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/root.css?v=1.0">
@@ -184,6 +184,9 @@
                 </a>
                 Method 1
             </h1>
+            <p>
+                We are creating a copy of our target, then we get its last element <code>[-1]</code>, we can do any checks with this element, then we remove it and go through this copy until it's empty.
+            </p>
         </article>
         <section class="algorithm" data-tab="0" data-workspace="namespace:path/to/function/" data-scoreboard="scoreboard" data-path="entity @s Inventory" data-temp="storage minecraft:temp Instance">
             <header>
@@ -266,6 +269,73 @@
                 I'm going to do this later, basically uses the same storage by moving elements from the beginning to the end, ez pz
             </p>
         </article>
+        <section class="algorithm" data-tab="0" data-workspace="namespace:path/to/function/" data-scoreboard="scoreboard" data-path="entity @s Inventory" data-temp="storage minecraft:temp Instance">
+            <header>
+                File <u data-get="workspace"></u>parse.mcfunction
+            </header>
+            <div>
+                <button class="button focus">
+                    <!-- INCLUDE assets/icons/text.svg -->
+                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon">
+                        <path d="m5 10h2c.554 0 1 .446 1 1s-.446 1-1 1h-2c-.554 0-1-.446-1-1s.446-1 1-1zm0-3h6c.554 0 1 .446 1 1s-.446 1-1 1h-6c-.554 0-1-.446-1-1s.446-1 1-1zm0-3h6c.554 0 1 .446 1 1s-.446 1-1 1h-6c-.554 0-1-.446-1-1s.446-1 1-1zm-3-4c-1.108 0-2 .892-2 2v12c0 1.108.892 2 2 2h12c1.108 0 2-.892 2-2v-12c0-1.108-.892-2-2-2zm1 2h10c.554 0 1 .446 1 1v10c0 .554-.446 1-1 1h-10c-.554 0-1-.446-1-1v-10c0-.554.446-1 1-1z"/>
+                    </svg>
+                    <!-- END INCLUDING assets/icons/text.svg -->
+                    <span>parse</span>
+                </button>
+                <button class="button">
+                    <!-- INCLUDE assets/icons/text.svg -->
+                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon">
+                        <path d="m5 10h2c.554 0 1 .446 1 1s-.446 1-1 1h-2c-.554 0-1-.446-1-1s.446-1 1-1zm0-3h6c.554 0 1 .446 1 1s-.446 1-1 1h-6c-.554 0-1-.446-1-1s.446-1 1-1zm0-3h6c.554 0 1 .446 1 1s-.446 1-1 1h-6c-.554 0-1-.446-1-1s.446-1 1-1zm-3-4c-1.108 0-2 .892-2 2v12c0 1.108.892 2 2 2h12c1.108 0 2-.892 2-2v-12c0-1.108-.892-2-2-2zm1 2h10c.554 0 1 .446 1 1v10c0 .554-.446 1-1 1h-10c-.554 0-1-.446-1-1v-10c0-.554.446-1 1-1z"/>
+                    </svg>
+                    <!-- END INCLUDING assets/icons/text.svg -->
+                    <span>parse_step</span>
+                </button>
+                <button class="button">
+                    <!-- INCLUDE assets/icons/array.svg -->
+                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon">
+                        <path d="m14 2v12h-3c-0.55228 0-1-0.44772-1-1s0.44772-1 1-1h1v-8h-1c-0.55228 0-1-0.44772-1-1s0.44772-1 1-1zm-12 0v12h3c0.55228 0 1-0.44772 1-1s-0.44772-1-1-1h-1v-8h1c0.55228 0 1-0.44772 1-1s-0.44772-1-1-1z"/>
+                    </svg>
+                    <!-- END INCLUDING assets/icons/array.svg -->
+                    <span>Setup Project</span>
+                </button>
+            </div>
+            <section>
+                <div>
+                    <span># 1. We need to create a temporary data holder, which we can modify without losing any data:</span>
+                    <span>data modify <u data-get="temp"></u>.Parsing set from <u data-get="path"></u></span>
+                    <span><br></span>
+                    <span># 2. We create a counter, that will start with the size of the array and decrease in a loop, as well as a result placeholder:</span>
+                    <span>execute store result score #Counter <u data-get="scoreboard"></u> run data get <u data-get="path"></u></span>
+                    <span>data remove <u data-get="temp"></u>.Match</span>
+                    <span><br></span>
+                    <span># 3. Then if the array isn't empty we start a loop:</span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>parse_step</a></span>
+                </div>
+                <div style="display: none;">
+                    <span>scoreboard players remove #Counter <u data-get="scoreboard"></u> 1</span>
+                    <span><br></span>
+                    <span># 4. We remove the last element of the array</span>
+                    <span>data remove <u data-get="temp"></u>.Parsing[-1]</span>
+                    <span><br></span>
+                    <span># Repeat the function or return the field depending on the counter:</span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches ..0 run data modify <u data-get="temp"></u>.Match set from <u data-get="temp"></u>.Parsing[-1]</span>
+                    <span>execute if score #Counter <u data-get="scoreboard"></u> matches 1.. run function <a><u data-get="workspace"></u>parse_step</a></span>
+                </div>
+                <div style="display: none;">
+                    <input type="text" class="input" data-set="workspace">
+                    <em>Define a path where this algorithm will be executed</em>
+
+                    <input type="text" class="input" data-set="scoreboard">
+                    <em>Define a scoreboard you will be using</em>
+
+                    <input type="text" class="input" data-set="path">
+                    <em>Define the NBT Path that you will be parsing</em>
+
+                    <input type="text" class="input" data-set="temp">
+                    <em>Define a temporary data holder</em>
+                </div>
+            </section>
+        </section>
     </main>
 </body>
 </html>
