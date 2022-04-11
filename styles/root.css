@@ -11,31 +11,301 @@
     --hint: #919191;
     --text: #F3F3F3;
 
-    --green: #35e443;
-    --blue: #3584E4;
-    --yellow: #ffbe32;
     --red: #ff5252;
+    --orange: #ff8732;
+    --yellow: #ffbe32;
+    --green: #35e443;
+    --light-blue: #52adf8;
+    --blue: #3584E4;
+    --purple: #f952ff;
     --accent: var(--blue);
 }
 
 * {
-    font-family: 'Ubuntu', sans-serif;
-}
-
-*:focus {
-    outline: 2px solid var(--accent);
+    font-family: -apple-system, BlinkMacSystemFont, 'Ubuntu', 'Segoe UI', Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
-    position:relative; 
+    position: relative; 
     min-height: 100%;
 }
 
 body {
     position: absolute;
+    background-color: var(--background);
     margin: 0;
-    width: 100vw;
-    height: 100vh;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+}
+
+nav {
+    position: fixed;
+    background-color: var(--header);
+    border-bottom: 1px solid var(--outline);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 100%;
+    height: 3rem;
+
+    overflow-y: hidden;
+    overflow-x: auto;
+    --button-idle: var(--header);
+    --button-hover: var(--header-light);
+}
+
+nav > div::before {
+    content: '';
+    display: block;
+    transition: margin-left 400ms;
+}
+
+nav > div {  /* Buttons container */
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    font-weight: bold;
+}
+
+nav > .button {
+    min-height: 2rem;
+}
+
+@media only screen and (max-width: 25rem) {
+    nav > div > .button span { display: none; }
+}
+
+aside {
+    position: fixed;
+    transition: left 400ms;
+    background-color: var(--header);
+    border-right: 1px solid var(--outline);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: min(100%, 18rem);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    left: calc(-18rem - 2px);
+    color: var(--text);
+
+    --button-idle: var(--header);
+    --button-hover: var(--header-light);
+    --input-idle: var(--background);
+}
+
+aside > header {
+    border-bottom: 1px solid var(--outline);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    font-weight: bold;
+    min-height: 3rem;
+    max-height: 3rem;
+}
+
+aside > header > span {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+aside > header > .button {
+    margin: 0.5rem;
+    min-height: 2rem;
+}
+
+aside > a.button:not(:first-of-type),
+aside > button.button {
+    margin-top: 0;
+}
+
+.directory > .icon:last-of-type {
+    margin-left: auto;
+}
+
+.directory + label {
+    background-color: var(--header);
+    transition: left 400ms;
+    position: absolute;
+    left: 18rem;
+    width: 18rem;
+    height: calc(100% - 4rem);
+    margin-top: calc(3rem + 1px);
+}
+
+hr {
+    border: none;
+    outline: none;
+    background-color: var(--outline);
+    height: 1px;
+    min-height: 1px;
+    width: 100%;
+}
+
+aside > hr {
+    margin: 0;
+}
+
+article > hr {
+    margin-left: -0.5rem;
+    width: calc(100% + 1rem);
+}
+
+button.directory-triggered + label {
+    left: 0;
+}
+
+aside.directory-triggered > *:not(label, header),
+label.directory-triggered > *:not(label, header) {
+    transition: transform 400ms;
+    transform: translateX(-18rem);
+}
+
+main {
+    transition: width 400ms, transform 400ms, filter 400ms;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    color: var(--text);
+
+    width: 100%;
+    height: calc(100% - 4rem - 1px);
+    margin-top: calc(3rem + 1px);
+    padding-top: 1rem;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: none;
+}
+
+body.sidebar-triggered nav > div::before {
+    margin-left: 18rem;
+}
+
+body.sidebar-triggered aside {
+    left: 0;
+}
+
+body.sidebar-triggered main {
+    transform: translateX(18rem);
+    filter: opacity(0.1);
+}
+
+main > header {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1px;
+    width: calc(100% - 2px);
+    height: 2rem;
+    min-height: 2rem;
+    margin-top: -1rem;
+    margin-left: 1px;
+    margin-bottom: 1rem;
+}
+
+main > header > button {
+    transition: background-color 150ms;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: 1px solid var(--outline);
+    border-radius: 0;
+    font-size: 0.8rem;
+    background-color: transparent;
+    color: var(--text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+main > header > button.focus,
+main > header > button:hover,
+main > header > button:focus {
+    background-color: var(--outline);
+}
+
+main > header > button > .icon {
+    transition: transform 150ms;
+    transform: rotate(90deg);
+    position: absolute;
+    right: 0.5rem;
+}
+
+main > header > button.focus > .icon {
+    transform: rotate(180deg);
+}
+
+@-webkit-keyframes targeted {
+    from {
+        background-color: var(--header-light);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        outline: 1px solid var(--accent);
+    }
+    to {
+        background-color: var(--background-light);
+        box-shadow: 0 0 0rem rgba(0, 0, 0, 0);
+    }
+}
+
+@-moz-keyframes targeted {
+    from {
+        background-color: var(--header-light);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        outline: 1px solid var(--accent);
+    }
+    to {
+        background-color: var(--background-light);
+        box-shadow: 0 0 0rem rgba(0, 0, 0, 0);
+    }
+}
+
+@-o-keyframes targeted {
+    from {
+        background-color: var(--header-light);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        outline: 1px solid var(--accent);
+    }
+    to {
+        background-color: var(--background-light);
+        box-shadow: 0 0 0rem rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes targeted {
+    from {
+        background-color: var(--header-light);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        outline: 1px solid var(--accent);
+    }
+    to {
+        background-color: var(--background-light);
+        box-shadow: 0 0 0rem rgba(0, 0, 0, 0);
+    }
+}
+
+@media only screen and (min-width: 50rem) {
+    body.sidebar-triggered main {
+        width: calc(100% - 18rem);
+        filter: none;
+    }
 }

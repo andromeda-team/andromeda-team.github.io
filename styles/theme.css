@@ -1,158 +1,125 @@
-body {
-    background-color: var(--background);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    color: var(--text);
-}
-
 .icon {
-    min-width: 1em;
     min-height: 1em;
+    min-width: 1em;
 }
 
-nav,
-main {
-    transition: transform 400ms, width 400ms;
+.graph {
     width: 100%;
 }
 
-nav {
-    position: fixed;
-    background-color: var(--header);
-    border-bottom: 1px solid var(--outline);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    height: 3rem;
-    min-height: 3rem;
-    padding: 0 0.5rem;
-    top: 0;
-    z-index: 1;
-}
-
-nav > div {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    white-space: nowrap;
-}
-
-@media only screen and (max-width: 50rem) { nav h1 { display: none } }
-@media only screen and (max-width: 25rem) { nav > div span { display: none } }
-
-.tab,
-.tab-button {
-    transition: background-color var(--speed);
-    background-color: var(--header);
-    padding: 0.5rem;
-    border-radius: 0.33rem;
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: center;
-    color: var(--text);
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-}
-
-.tab:hover,
-.tab-button:hover,
-.tab.focus {
-    background-color: var(--header-light);
-    outline: 1px solid var(--outline);
-}
-
-.tab-button {
-    width: 2rem;
-    height: 2rem;
-    justify-content: center;
-}
-
-aside {
-    transition: left 400ms;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    background-color: var(--header);
-    border-right: 1px solid var(--outline);
-    height: 100vh;
-    width: min(100vw, 18rem - 1px);
-    left: -18rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-aside > header {
-    height: 3rem;
-    border-bottom: 1px solid var(--outline);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 0.5rem;
-}
-
-aside.triggered {
-    left: 0;
-}
-
-aside h1 {
-    font-size: 1rem;
+.graph + em {
+    display: block;
+    text-align: center;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
+.button {
+    transition: background-color 150ms;
+    background-color: var(--button-idle);
+    color: var(--text);
+    outline: none;
+    border: none;
 
-nav.triggered,
-aside.triggered + main {
-    transform: translateX(18rem);
-    width: calc(100% - 18rem);
-}
-
-nav.triggered .sidebar_trigger {
-    display: none;
-}
-
-main {
-    background-color: var(--background);
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 0;
-    height: calc(100% - 4rem);
-    width: 100%;
-    overflow-y: auto;
-    margin-top: 3rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0 0.5rem;
+    margin: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 0.33rem;
+    text-decoration: none;
+    font-size: 1rem;
+    min-height: 2.25rem;
+    min-width: 2rem;
+}
+
+.button:hover,
+.button.focus {
+    background-color: var(--button-hover);
+    outline: 1px solid var(--outline);
+}
+
+.button:focus {
+    outline: 2px solid var(--accent);
+}
+
+.input {
+    transition: background-color 150ms;
+    background-color: var(--input-idle);
+    color: var(--text);
+    outline: none;
+    border: none;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    margin: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 0.33rem;
+    text-decoration: none;
+    font-size: 1rem;
+    min-height: 2.25rem;
+}
+
+.labeled-input {
+    width: 17rem;
+    height: 2.25rem;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+    border-radius: 0.33rem;
+    outline: 1px solid var(--outline);
+}
+
+.labeled-input > .icon {
+    width: 2.25rem;
+}
+
+.labeled-input > .input {
+    background-color: transparent;
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
+.labeled-input > button {
+    transition: color 150ms;
+    height: 100%;
+    width: 2.25rem;
+    border: none;
+    border-radius: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+}
+
+.labeled-input > button:hover,
+.labeled-input > button:focus {
+    color: var(--red);
 }
 
 article,
-.algorithm {
-    position: relative;
-    display: block;
+.workspace {
     background-color: var(--background-light);
+    margin: 0 auto 1rem auto;
+    width: min(100vw - 1rem, 32rem);
+    border-radius: 0.5rem;
     outline: 1px solid var(--outline);
-    width: min(100% - 3rem, 40rem);
-    height: fit-content;
     padding: 0.5rem;
-    border-radius: 0.33rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-article hr {
-    border: none;
-    outline: none;
-    width: calc(100% + 1rem);
-    margin-left: -0.5rem;
-    height: 1px;
-    background-color: var(--outline);
 }
 
 article:target {
@@ -168,404 +135,187 @@ article:target::before {
     margin-bottom: 0.25rem;
 }
 
-@keyframes targeted {
-    from {
-        background-color: var(--header-light);
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-        outline: 1px solid var(--accent);
-    }
-    to {
-        background-color: var(--background-light);
-        box-shadow: 0 0 0rem rgba(0, 0, 0, 0);
-    }
-}
-
 article h1 {
     margin: 0;
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
     align-items: center;
-    font-size: min((100vw + 0rem) * 0.08, 1.5rem);
-    overflow-wrap: break-word;
-    white-space: normal;
-    hyphens: auto;
+    gap: 0.5rem;
 }
 
 article h1 a {
-    transition: color var(--speed);
-    display: inline-block;
+    color: var(--text);
     text-decoration: none;
-    color: var(--text);
-    width: 1em;
-    height: 1em;
-    border-radius: 0.5rem   ;
-}
-
-article h1 a:hover {
-    color: var(--accent);
-}
-
-.input {
-    border: none;
-    outline: 1px solid var(--outline);
-    background-color: var(--background);
-    padding: 0.5rem;
-    margin: 0.5rem;
-    border-radius: 0.33rem;
-    color: var(--text);
-    font-size: 1rem;
-}
-
-.input.labeled {
-    padding-left: 2rem;
-}
-
-.input.labeled + label {
-    margin-top: -2.1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1.1rem;
-    border-bottom: 1px solid var(--outline);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    cursor: text;
-}
-
-.input.labeled + label button {
-    display: none;
-    background-color: transparent;
-    width: 1rem;
-    height: 1rem;
-    border: none;
-    color: var(--text);
     justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    cursor: pointer;
 }
 
-.input.labeled + label button.focus {
-    display: flex;
-}
-
-.input.labeled + label button:focus {
-    outline: none;
-    color: var(--accent);
-}
-
-.button {
-    transition: background-color var(--speed);
-    background-color: transparent;
-    padding: 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    border-radius: 0.33rem;
-    border: none;
-    font-weight: bold;
-    color: var(--text);
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-}
-
-button.button > .icon:last-child {
-    margin-left: auto;
-}
-
-.button:hover,
-.button.focus {
-    background-color: var(--header-light);
-    outline: 1px solid var(--outline);
-}
-
-.button.focus { pointer-events: none; }
-
-button.button + label {
-    transition: left 400ms;
-    position: absolute;
-    background-color: var(--header);
-    top: calc(3.5rem + 1px);
-    left: 18rem;
-    width: 18rem;
-    height: calc(100% - 3.5rem - 1px);
-    margin: -0.5rem 0;
-    padding-bottom: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-button.button + label > hr {
-    border: none;
-    outline: none;
-    background-color: var(--outline);
-    height: 1px;
-    width: 100%;
-    max-height: 1px;
-}
-
-label.unfolded > a,
-label.unfolded > button,
-aside.unfolded > a,
-aside.unfolded > button {
-    transition: transform 400ms;
-    transform: translate(-18rem);
-}
-
-button.button.unfolded + label {
-    left: 0;
+article a {
+    color: var(--light-blue);
 }
 
 article p {
+    line-height: 1.5rem;
     margin-top: 0;
-    line-height: 1.25rem;
+    text-overflow: ellipsis;
 }
 
 article p:last-child {
     margin-bottom: 0;
 }
 
-article a {
-    color: var(--blue);
-}
-
-em.extra {
-    color: var(--hint);
-}
-
-code {
-    display: inline-block;
-    font-family: 'Ubuntu Mono', monospace;
-    background-color: var(--background);
-    padding: 0.125rem 0.25rem;
-    border-radius: 0.33rem;
-}
-
-.graph,
-em.title {
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0.5rem;
+article code,
+article pre {
+    display: inline;
     width: fit-content;
-}
-
-article ul {
-    padding-left: 1rem;
-    margin-top: -0.5rem;
-    line-height: 1.25rem;
-}
-
-article ul li {
-    margin-top: 0.5rem;
-}
-
-main > header {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    height: 2rem;
-    min-height: 2rem;
-    width: 100%;
-    margin-top: -1rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    border-bottom: 1px solid var(--outline);
-}
-
-main > header button {
-    position: relative;
-    background-color: var(--background);
-    outline: 1px solid var(--outline);
-    width: 100%;
-    border: none;
-    color: var(--text);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-}
-
-main > header button:focus,
-main > header button.focus {
-    background-color: var(--header-light);
-    outline: 1px solid var(--outline);
-}
-
-main > header button .icon {
-    transition: transform var(--speed), color var(--speed);
-    position: absolute;
-    right: 1rem;
-    transform: rotate(90deg);
-}
-
-main header button.focus .icon {
-    transform: rotate(270deg);
-    color: var(--hint);
-}
-
-.algorithm {
-    background-color: var(--background);
-    padding: 0;
-    width: min(100% - 2rem, 41rem);
-    height: 20rem;
-    min-height: 20rem;
-    display: grid;
-	grid-template-columns: 10rem 1fr;
-	grid-template-rows: 2rem 18rem;
-    gap: 1px;
-    overflow: hidden;
-}
-
-.algorithm * {
-    font-family: 'Ubuntu Mono', monospace;
-}
-
-.algorithm > header {
-    position: relative;
-    background-color: var(--header);
-    border-bottom: 1px solid var(--outline);
-    grid-area: 1 / 1 / 2 / 3;
-    padding: 0.5rem 0.5rem;
-    height: calc(2rem - 1rem);
-    font-family: 'Ubuntu Mono', monospace;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-
-.algorithm > div {
-    background-color: var(--header);
-    grid-area: 2 / 1 / 3 / 2;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border-right: 1px solid var(--outline);
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.algorithm > div button.button {
+    gap: 0.5rem;
     padding: 0.25rem 0.5rem;
-    white-space: nowrap;
-}
-
-.algorithm > div button.button:last-child {
-    margin-top: auto;
-    margin-bottom: 0.5rem;
-}
-
-.algorithm > div button.button > .icon:last-child {
-    margin-left: 0;
-}
-
-.algorithm > section {
     background-color: var(--background);
-    grid-area: 2 / 2 / 3 / 3;
+    color: var(--text);
+    height: 1.25rem;
+    border-radius: 0.33rem;
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
 }
 
-.algorithm > section > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    overflow: auto;
+article pre {
+    display: block;
+    height: fit-content;
+    width: calc(100% - 1rem);
+    overflow-x: auto;
 }
 
-.algorithm > section > div > span {
-    font-size: 1rem;
-    padding: 0.5rem;
-}
-
-.algorithm > section > div > span:nth-child(2n) {
-    background-color: var(--background-dark);
-}
-
-.algorithm > section > div > span a {
+article code u {
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
     color: var(--green);
 }
 
-.algorithm > section > div > input {
+article code.cmd::before,
+article code.dir::before,
+article code.nbt::before {
+    content: '';
+    display: inline-flex;
+    width: 1rem;
+    min-width: 1rem;
+    height: 1.5rem;
+    transform: translateX(-0.25rem) translateY(0.4rem);
+    background-size: 1rem 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+article code.cmd::before {
+    background-image: url('/assets/img_icons/cmd.svg');
+}
+
+article code.dir::before {
+    background-image: url('/assets/img_icons/dir.svg');
+}
+
+article code.nbt::before {
+    background-image: url('/assets/img_icons/nbt.svg');
+}
+
+article ol {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+article ol li {
+    line-height: 1.5rem;
+}
+
+.workspace {
+    width: min(100vw, 33rem);
+    background-color: var(--background-dark);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: max-content;
+}
+
+.workspace > div {
+    background-color: var(--background);
+    height: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--outline);
+}
+
+.workspace > div > select {
     background-color: var(--header);
-}
-
-.algorithm > section > div > em {
-    font-style: normal;
-    margin-bottom: 1rem;
+    border: none;
+    outline: none;
+    padding: 0.25rem;
+    outline: 1px solid var(--outline);
+    color: var(--text);
+    border-radius: 0.33rem;
+    width: 100%;
     font-size: 1rem;
+}
+
+.workspace > section {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 2.5rem);
+}
+
+.workspace > section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.workspace > section > div > .input {
+    --input-idle: var(--header);
+    outline: 1px solid var(--outline);
+    padding: 0 0.5rem;
+}
+
+.workspace > section > div > em {
+    font-style: normal;
+    font-size: 0.8rem;
     color: var(--hint);
-    margin-top: 0rem;
-    padding: 0 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-@media only screen and (max-width: 40rem) {
-    nav,
-    aside + main {
-        transition: filter 400ms, transform 400ms;
-    }
-    
-    nav.triggered,
-    aside.triggered + main {
-        filter: brightness(0.2);
-        pointer-events: none;
-        width: 100vw;
-    }
-
-    main::after {
-        content: '';
-        display: block;
-        margin-bottom: 4rem;
-    }
+.workspace > section > div > span {
+    padding: 0.25rem 0.5rem;
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
 }
 
-@media only screen and (max-width: 25rem) {
-    .algorithm {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .algorithm > header {
-        min-height: 1.5rem;
-    }
-
-    .algorithm > div {
-        min-height: 3rem;
-        height: 3rem;
-        flex-direction: row;
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
-
-    .algorithm > div > button {
-        height: 2rem;
-    }
-
-    .algorithm > section {
-        height: calc(100% - 6rem);
-    }
+.workspace > section > div > span * {
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
 }
 
-.format-comment {
+.workspace > section > div > span:nth-child(2n) {
+    background-color: var(--background);
+}
+
+.workspace .format-comment {
     color: var(--hint);
+    font-style: italic;
 }
 
-.format-command {
+.workspace .format-command {
     color: var(--red);
 }
 
-.format-selector {
-    color: var(--yellow);
+.workspace .format-selector {
+    color: var(--light-blue);
+}
+
+.workspace a {
+    color: var(--green);
 }

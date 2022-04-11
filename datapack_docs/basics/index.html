@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/styles/theme.css?v=1.1">
     <script type="module" src="/scripts/theme.js?v=1.1" defer></script>
     <!-- END INCLUDING assets/site_components/head.html -->
-    <title>Main - Data Pack Docs</title>
+    <title>Introduction / Basics - Data Pack Docs</title>
 </head>
 
 <body>
@@ -182,37 +182,57 @@
     </aside>
     <!-- END INCLUDING assets/site_components/datapack_docs/sidebar.html -->
     <main>
-        <article id="description">
+        <article id="data-packs">
             <h1>
-                <span>Minecraft Data Pack Documentation</span>
+                <span>Data Packs</span>
             </h1>
             <p>
-                Explore solutions, tips & hints for advanced data pack development!
+                Data Pack is a collection of files, that extends & overrides minecraft <code class="dir">data</code>
+                directory. Thats the best definition you can get.
             </p>
             <p>
-                This documentation is written by experienced data-packers, and is made for someone who has at least
-                basic knowledge about commands, functions, etc.
+                It lets you create functions, tags, advancements, recipes, predicates and more.
+            </p>
+            <hr>
+            <p>
+                Every minecraft world has default data pack installed, its called vanilla, what you can confirm by doing
+                <code class="cmd">datapack list enabled</code>.
             </p>
             <p>
-                It is constantly improving, getting new articles, extending previous ones and more. Don't be shy to add
-                it into your bookmarks and visit once a day!
+                You can find this pack and its contents by going into <code
+                    class="dir">.minecraft / versions / &lt;Version you want to check&gt;</code> and extracting the .jar
+                file as an archive, you will see the <code class="dir">data</code> and <code class="dir">assets</code>
+                directories inside.
+            </p>
+            <hr>
+            <p>
+                Thus, people always have several data packs installed, if they have installed at least one.
+            </p>
+            <p>
+                It opens topic about pack compatibility. When developing, you must always encounter other possible packs
+                used by the end user.
+            </p>
+            <p>
+                Thats the reason namespaces exist!
             </p>
         </article>
-        <article id="contribute">
-            <h1>
-                <span>Contribute</span>
-            </h1>
+        <article id="namespaces">
+            <h1><span>Namespaces</span></h1>
             <p>
-                Are you an experienced data-packer? Have you spot a mistake or know a better solution?
+                They are named with latin lower case characters without spaces. Only <code>_</code> and <code>-</code>
+                allowed. They let you separate your content from others' content.
             </p>
             <p>
-                You can contribute to this documentation by going onto the <a
-                    href="https://github.com/andromeda-team/andromeda-team.github.io/">Github Repository</a> and
-                creating a new Pull Request / Opening an Issue.
+                Namespaces should be related to the data pack name, and be unique enough not to cause any issues. For
+                example if my data pack is about vehicles, I am going to add my nickname in front to make it unique:
+                <code>bubblevehicles</code>.
             </p>
+            <hr>
             <p>
-                You don't have to know HTML nor CSS, just write what you want in plain text and we will make sure it
-                looks good!
+                Besides, there are tags, teams and scoreboards - these don't have namespaces, so it is considered a
+                better practice to use prefixes. Usually they are short namespaces up to 4 letters + a dot in the end
+                (in case with <code>bubblevehicles</code> it's <code>buvs.</code>, so <code>my_team</code> would be
+                called <code>buvs.my_team</code> ).
             </p>
         </article>
     </main>
